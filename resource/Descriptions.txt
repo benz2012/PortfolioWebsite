@@ -1,0 +1,158 @@
+Ben Zenker Portfolio Website
+HTML, CSS, Javascript, JQuery
+2015
+You’re looking at it! Everything you see here was designed and built by me! I created all icons and wrote every line of HTML, CSS, and Javascript. It took much longer than using a templates or plug-ins but I used this as a learning experience to help me stay up-to-date with current HTML/CSS/JS standards.
+Outside Resources Included:
+JQuery
+Goggle Web Fonts
+Check out my source files if you want a deeper look at my work:
+Download Files - https://drive.google.com/folderview?id=0B_YBIeoOUofDM0h3V3pkdjJwM1k&usp=sharing
+
+
+
+Picnic
+Objective-C
+2014-Present
+Every single day, College students are opening up Facebook, Google+, GroupMe, What’s App and various other messaging services in order to trying and figure out where their friends will be eating lunch.
+
+Picnic is a food-based social interaction app.
+The goal of the app is to connect students with their friends on a daily basis, simply through sharing their choice of location in the future. Picnic gives students a simple way to view where all of their friends will be eating, giving them the power to easily make a decision.
+
+This is a personal project started through an original idea. The creation of this product prompted me to learn Objective-C through Team Treehouse. You can view my learning progress here.[https://teamtreehouse.com/benzenker] The App is in a launch-able state, but needs integration with Parse (to hold data) and Facebook (to allow for accounts and friends) before it is ready to be submitted to the app store.
+
+
+
+Toolshare
+HTML, CSS, Javascript, Python, Django
+2014
+Toolshare allows people living in the same neighborhood or area to lend, borrow and share tools and items between each other. Neighbors within a community will be able to share items of common use and save money by using the resources of the community more efficiently.
+
+This was an academic project that took place during the Fall Semester of 2014, in a class titled Intro to Software Engineering. [http://www.se.rit.edu/~swen-261/] During the semester I worked on a team of four to design, build, and test this social web application while taking advantage of software engineering principles, team dynamics, and workflows. My Contributions included leading the production of front-end design for the application, and participating in the database integration using the Django framework. [https://www.djangoproject.com/]
+
+
+
+Soul Searchers
+HTML, CSS
+2011
+Founded in 2009, Soul Searchers uses scientific methods along with common knowledge to come up with an alternative explanation for what could be happening when paranormal activity has been reported. Using High-Tech instruments and an unbiased approach, they tackle every case as if it was a scientific experiment. Soul Searchers is the first state-recognized volunteer based group and is stationed in Auburn, New York.
+
+I met this group through a classmate at my high school and took their project as a chance to learn more about web development, and as a way to gain real-world experience building websites. Their website can be viewed here. [http://soulsearcherscny.com/index.html]
+
+Most of this website was built during the summer of 2011, when my knowledge of HTML and CSS were still elementary. It might not be my best work, but it’s important for people to know where I began. I was personally keeping their website up-to-date, but during the summer of 2014 I began teaching one of their members HTML in order to enable their team to make changes on their own. 
+
+
+
+——————————————————————————————
+Autonomous Drone & Broadcast System
+Motion Picture Science Senior Project
+2015-Present
+This project has the goal of creating an out-of-the-box solution to dynamic broadcasting without the need of a multi-person crew (cameraman, boom operator, etc). We will build an automated quadcopter designed for a one man broadcast team. The goal will be to develop a drone that will intelligently work along side a single broadcast reporter and accurately frame, shoot, and broadcast a live signal to a variety of media formats all without a drone pilot. The video for this system will be captured with a small camera mounted to a 4-bladed miniature helicopter (quadcopter). Our approach is to use existing quadcopter technology and to stream the video through either a mobile or desktop environment that can be utilized for live streaming over the internet.
+
+At the conclusion of our Senior Project, we plan to have a quadcopter that functions as a personal cameraman through the broadcaster-following camera movement, and the other implemented visual camera angles. The data workflow we plan to complete is video-capture from the GoPro to be saved on the GoPro’s SD card, and uploaded to a broadcasting network through the use of a computer. This video signal will contain synced audio that was recorded with the handheld microphone that can be used to mount a drone-controlling smart phone. The end goal is to provide a workflow and a product that can be taken out of the box and act autonomously to provide great broadcast video, while allowing the broadcaster to focus on the delivery of their report.
+
+This is a Two-Person senior project that will be completed during the 2015-2016 academic year. My partner on this adventure is Alex Pattison [https://www.linkedin.com/pub/alexander-pattison/68/341/663]. 
+
+To view our entire project proposal, download the PDF. [https://drive.google.com/file/d/0B_YBIeoOUofDczFaWi1LMkNlUGM/view?usp=sharing]
+
+
+
+Technical Camera Shoot-out
+Canon 5D Mark III vs. Black Magic Cinema
+2015
+The Blackmagic Cinema Camera (2.5K) and Canon 5D Mark III’s performance were put to the test via a sequence of scenes designed to illustrate image quality attributes. Color reproduction, dynamic range, exposure latitude, noise, MTF, sharpness, and ease of compositing are all aspects of each imager that were compared. These topics were explored both qualitatively and quantitatively. The aim of this comparison is to determine which camera would best suit a low-budget production, amateurs, or independent filmmakers. It was found that the 5D excelled in strictly image quality, but came at the expense of ease of use. If looking for the most simplistic workflow, the Blackmagic camera would be preferred.
+
+The Motion Picture Science (MPS) Technology Core Shoot-out is a semester-long project that takes place annually in the spring semester of the 3rd year of the MPS program. This year we had three teams of 4-5 students each, with each team comparing 2 cameras. My team was made up of 4 other members: Nate McFarlin, Alex Pattison, Max Pope, and Matt Setlow.
+[https://www.linkedin.com/pub/nathaniel-mcfarlin/85/262/a8]
+[https://www.linkedin.com/pub/alexander-pattison/68/341/663]
+[https://www.facebook.com/maxwell.pope]
+[https://www.facebook.com/matt.setlow]
+
+To view our Shoot-out video production, head to the video page and watch Rawvenge of the Sith. [index.html#v-04]
+
+To view our entire technical comparison, download the PDF. [https://drive.google.com/file/d/0B_YBIeoOUofDbGtiR0l0aW5YeEU/view?usp=sharing] 
+
+
+
+Calc Clip
+Invention and Utility Patent
+2009-2011
+Graphing calculators [https://education.ti.com/en/us/products#!product=graphing-calculators] are utilized in most high school math classrooms throughout New York State. Using the calculators at student desks has been problematic. The working surfaces of student desks are not very large and when you add a textbook and/or worksheet to the surface, workspace is at a premium. Many times the calculators get knocked on to the floor due to the cramped work surface. With the price of the calculators running about $120 per unit, maintaining a long, useable lifespan for these calculators is fiscally responsible. 
+
+Myself, along with a fellow student, Zak Koster [https://www.linkedin.com/in/zakerykoster], and my 9th grade technology education teacher Mr. Todd Dischinger [https://www.linkedin.com/pub/todd-dischinger/89/a04/413] created a solution to this problem in 2009. Together we designed and fabricated the Calc Clip, a calculator holder.
+
+Not only do the calculator holders protect the calculators from being knocked on to the floor, the holder also improves the display screen viewing angle for the student and the teacher, and improves inventory control for the teacher. The holder can be easily repositioned by the student for ease of use, there are no tools required for installation, and there is no damage or machining that needs to be done to the calculator case.
+
+Following this invention, Todd Dischinger helped the group in securing a short-term utility patent on the design. In 2010, we won New York’s Creative Core $5000 Business Idea competition, after having already installed the holders on every desk in our 9th grade high school annex. [http://anx.liverpool.k12.ny.us/] Using those funds we took the opportunity to expand and made a sale at Zak’s new high school in Virginia, Lake Braddock Secondary School. [http://www.fcps.edu/LakeBraddockSS/]
+
+We also produced a short video pitch [https://www.youtube.com/watch?v=b-tl4BBMphw] for a local business idea show-and-tell at the Syracuse Tech Garden [http://thetechgarden.com/] in 2010.
+
+
+
+FIRST Robotics Competition
+High School STEM Challenge
+2008-2012
+“The varsity Sport for the Mind, FRC combines the excitement of sport with the rigors of science and technology. Under strict rules, limited resources, and time limits, teams of 25 students or more are challenged to raise funds, design a team "brand," hone teamwork skills, and build and program robots to perform prescribed tasks against a field of competitors.  It’s as close to "real-world engineering" as a student can get. Volunteer professional mentors lend their time and talents to guide each team.” - http://www.usfirst.org/roboticsprograms/frc
+
+A student of Liverpool High School [http://lhs.liverpool.k12.ny.us/], I belonged to team 174, the Arctic Warriors. [https://sites.google.com/a/liverpool.k12.ny.us/arcticwarriors/home]
+
+I was a member of team 174 for all 4 years of my high school career, and I was a Driver during my senior year. FIRST Robotics helped me discover and cultivate my passions for science, technology, and engineering. Without it, I might have entered a more artistic program in college. Instead, I decided to maintain both my passions for art and science through the Motion Picture Science program at RIT. [https://cias.rit.edu/schools/film-animation/undergraduate-motion-picture-science]
+
+
+
+——————————————————————————————
+Sigma Chi
+International Fraternity
+2013-Present
+I originally joined greek life specifically for the leadership aspects that it would provide me with. I quickly found out what it truly meant to be part of something bigger than myself. Being a member of RIT greek life gives me the chance to interact with countless numbers of other leaders on this campus who want to make a difference in their community. During the summer of 2014, I visited the Huntsman Cancer Institute at the University of Utah. When I was there I gained a new appreciation for what it meant to raise money for a cause, and for the lives that were being changed by this great facility. 
+
+Upon returning to RIT in the fall, I would walk past a table or an activity set up by a greek organization that was trying to raise money for their cause, and I couldn’t help but toss a few dollars their way. In the past, I would have considered a few dollars not enough to matter, and continued on my way. But now that I had seen the life changing ability that just a few dollars can have, my eyes were opened. I don’t think I would have come to this realization until much later in life if I was not involved in greek life. Philanthropy is not about the total, its not about the games or the fun we might have, and its definitely not about any organization. Being greek means that we are all fighting for something, it means that we are all committed to changing the lives of the people around us, and that even the smallest acts can make a difference.
+
+Possessions Held: Recruitment Chairman, Social Chairman.
+Awards Received: George (Brother who has done the most for the chapter throughout the year), Most Embarrassing, Most Valuable New Member.
+
+Learn more about Sigma Chi. [http://sigmachi.org/]
+Learn more about the Lambda Kappa Chapter at RIT. [http://sigmachirit.com/]
+
+“Sigma Chi Horizons was a truly defining moment in my life. The amount of content that was packed into my 7 day journey to Utah was unbelievable. The connections that I made with the other young men in my group rival those found in my own pledge class of Sigma Chi, Lambda Kappa.” - Ben Zenker
+
+Learn more about my Horizons experience. [http://sigmachirit.com/my-horizons-experience-ben-zenker/]
+Learn more about Sigma Chi Horizons. [http://sigmachi.org/horizons/]
+
+
+
+RIT Leadership Institute & Community Service Center
+Student Advisory Board
+2013-Present
+The RIT Leadership Institute & Community Service Center (RLI&CSC) offers a number of resources too all students on campus such as Leadership related courses, retreats, and certificate programs. They also offer an on campus connection for local community service agencies and an alternative spring break for students who strive to be the above average volunteer.
+
+“The Student Advisory Board (SAB) gives students the opportunity to develop their leadership skills by not only participating in Leadership Institute programs but by helping to plan and facilitate activities as well as to serve as mentors for new students involved in the programs.” - RLI&CSC Website [https://www.rit.edu/studentaffairs/lead/about-us/student-advisory-board]
+
+I have been a member of the SAB since Fall of 2013 and was recently elected Co-President for the 2015-2016 academic school year. My time spent as a member of the board has been anything but boring. Attending retreats, leading workshops, and even serving as the Connectology Chairman [https://www.rit.edu/studentaffairs/lead/conferences-and-events/connectology-leadership-conference] for 2015, I’ve learned much about myself and my own leadership style, as well as how I interact with others in differing situations. The RLI&CSC uses the DiSC assessment tool [https://www.discprofile.com/which-disc-to-use/leadership-and-disc/] in many of our training sessions, as it is a good base for anyone in understanding their own qualities and how to shift their behavior to better suit those around them.
+
+I am extremely excited to be Co-Presidents with Austin Quinlan [https://www.linkedin.com/pub/austin-quinlan/66/26/88] this year and you can expect this section to be up-to-date with my full journey by May of 2016.
+
+
+
+RIT Center for Orientation & Transition
+Orientation Leader
+2013-Present
+“New Student Orientation is a series of events, activities, and opportunities developed to assist students, both first-year and transfer, and their families in transitioning to life at RIT. We offer New Student Orientation twice per academic year; a five day program in August prior to the start of fall courses and a three day program in January prior to the start of spring courses.” - New Student Orientation [https://www.rit.edu/studentaffairs/orientation/content/mission-vision]
+
+Orientation is important because it provides a gateway for both incoming students, and existing students. As a freshman, I felt that orientation was fun and relaxing. It put me in direct contact with many other freshman, right away, and it did a great job of easing the transition to college. As a second year student, first time OA, it opened my eyes to the leadership capabilities that I had within me, and provided me with the necessary resources to immediately get involved on campus. It also connected me with hundreds of new people that I never would have met if I hadn’t been an OA. 
+
+In summary, orientation provides the gateway for freshman to overcome the fears of college, and it provides the gateway for existing students to realize the potential within themselves. In the fall of 2015, I will serve as a Lead Orientation Assistant after serving as an Orientation Assistant for two years. It’s truly hard to describe the emotion and personality of the RIT New Student Orientation program, but it is one that I will never forget.
+
+This year I am one of the two Lead OAs for Team 1! My Partner is Courtney Armitage. [https://www.linkedin.com/pub/courtney-armitage/83/998/41b]
+
+
+
+Eagle Project
+Nature Trail Revival
+2011-2012
+Step outside the north entrance of Donlin Drive Elementary [http://dde.liverpool.k12.ny.us/] in Liverpool, NY and you will find a nature trail. It is a scenic route full of plant life and a great place for teachers to take their students for a quick outdoor activity. Unfortunately, in 2010, the trail had degraded from its original form so much that it was reduced to a dirt path containing many large ruts (caused by ATVs) and was culprit of creating muddy shoes to all who walked its path. 
+
+My eagle project involved the renovation of this trail. We started by cutting back brush and invasive plant life that was making it difficult to maneuver through the trail. We cleared the drain pipes near the entrances of the trail and surrounded them with stones to help prevent future clogs. During mid-August of 2011, I led around 35 volunteers in the ‘heavy lifting’ part of the project. We spent the day covering the trail with dirt (to fill in ruts and level off the trail), followed by 4 inches of wood-chips. At the end of the day, we installed one metal post at each entrance to prevent future motorized vehicle deterioration of the trail. 
+
+We also installed a number of cement trail markers with wooden plaques that were placed in the ground to identify nearby plant life. To compliment the trail markers, I created a worksheet that discussed each specific plant in depth, along with an accompanying illustration. To view the worksheet, please visit the Graphic page. [graphics.html#g-21]
+
+
