@@ -91,7 +91,13 @@ function loadContent(contentCode, contentURL, date){
 	} else if (contentCode.indexOf("v") >= 0) {
 		// Specific for Videos
 		var externalURL = "modal/videoData.html #" + contentCode;
-		var videoURL = contentURL.slice(17,28);
+		var videoURL = "";
+		if (contentCode.indexOf("vv" >= 0)) {
+			videoURL = contentURL
+		} else {
+			videoURL = contentURL.slice(17,28);
+		}
+		
 		$(".modal-content iframe").attr("src", "https://www.youtube.com/embed/" + videoURL);
 		$("#include-TITLE").load(externalURL + " .title");
 		date = "Video Created: " + date;
