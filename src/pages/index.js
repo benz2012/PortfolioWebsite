@@ -2,16 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 
-import Project from '../components/project'
-
-const PageContainer = styled.div`
-  margin: 3rem auto;
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
+import Project from '../components/Project'
+import Page from '../components/Page'
 
 const ProjectsWrapper = styled.div`
   display: flex;
@@ -21,35 +13,38 @@ const ProjectsWrapper = styled.div`
 export default ({ data }) => {
   const projects = data.allContentfulProject.edges
   return (
-    <PageContainer>
+    <Page>
       <h1>Ben Zenker</h1>
       <p>Welcome to my protfolio website</p>
+
       <ProjectsWrapper>
-        {projects.map(({ node }) => (
-          <Project
-            key={node.id}
-            name={node.name}
-            date={node.date}
-            description={node.description.description}
-            image={node.coverPhoto.file.url}
-            tags={node.tags}
-            color={node.color}
-          />
-        ))}
+        {projects.map(({ node }) => {
+          const { id, dateCreated, description, coverPhoto, ...rest } = node
+          return (
+            <Project
+              key={id}
+              date={dateCreated}
+              description={description.description}
+              image={coverPhoto.file.url}
+              {...rest}
+            />
+          )
+        })}
       </ProjectsWrapper>
-    </PageContainer>
+    </Page>
   )
 }
 
 export const query = graphql`
 {
-  allContentfulProject {
+  allContentfulProject(sort: { fields: dateCreated, order: DESC }) {
     edges {
       node {
         id
         name
         color
-        dateCreated
+        dateCreated(formatString: "MMMM Do, YYYY")
+        slug
         description {
           description
         }

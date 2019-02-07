@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import Tag from './tag'
+import Tag from './Tag'
 
 const ProjectContainer = styled.div`
   width: 400px;
@@ -15,10 +16,19 @@ const TagsWrapper = styled.div`
   flex-wrap: wrap;
 `
 
-export default ({ name, date, description, image, color, tags }) => (
+const NameLink = styled(Link)`
+  &:hover {
+    text-decoration: underline;
+  }
+  color: inherit;
+`
+
+export default ({ name, date, description, image, color, tags, slug }) => (
   <ProjectContainer>
-    <h2>{name}</h2>
-    <span>{date}</span>
+    <NameLink to={`/projects/${slug}/`}>
+      <h2>{name}</h2>
+    </NameLink>
+    <small><em>{date}</em></small>
     <p>{description}</p>
     <img alt={name} src={image} width="100px" />
     <TagsWrapper>
