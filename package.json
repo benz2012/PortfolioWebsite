@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.0",
-    "gatsby": "^2.0.115",
+    "dotenv": "^6.2.0",
+    "gatsby": "^2.0.116",
     "gatsby-plugin-styled-components": "^3.0.5",
     "gatsby-plugin-typography": "^2.2.7",
+    "gatsby-source-contentful": "^2.0.29",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-typography": "^0.16.18",
@@ -29,5 +31,6 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
-  }
+  },
+  "devDependencies": {}
 }
