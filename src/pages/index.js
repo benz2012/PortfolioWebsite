@@ -4,11 +4,12 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 import Project from '../components/Project'
-import Page from '../components/Page'
+import { Page, Center } from '../components/Layout'
 
 const ProjectsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `
 
 const HeroText = styled.h1`
@@ -31,27 +32,31 @@ export default ({ data }) => {
       </HeroText>
 
       <Page>
-        <p>Welcome to my protfolio website</p>
+        <Center>
+          <p>Welcome to my portfolio website</p>
 
-        <ProjectsWrapper>
-          {projects.map(({ node }) => {
-            const { id, dateCreated, description, coverPhoto, ...rest } = node
-            return (
-              <Project
-                key={id}
-                date={dateCreated}
-                description={description.description}
-                image={coverPhoto.file.url}
-                {...rest}
-              />
-            )
-          })}
-        </ProjectsWrapper>
+          <ProjectsWrapper>
+            {projects.map(({ node }) => {
+              const { id, dateCreated, description, coverPhoto, sections, ...rest } = node
+              return (
+                <Project
+                  key={id}
+                  date={dateCreated}
+                  description={description.description}
+                  image={coverPhoto.file.url}
+                  tags={sections.map(s => s.tag)}
+                  {...rest}
+                />
+              )
+            })}
+          </ProjectsWrapper>
+        </Center>
       </Page>
     </div>
   )
 }
 
+// TODO: Grab cover photo as fluid
 export const query = graphql`
 {
   allContentfulProject(sort: { fields: dateCreated, order: DESC }) {
@@ -60,14 +65,16 @@ export const query = graphql`
         id
         name
         color
-        dateCreated(formatString: "MMMM Do, YYYY")
+        dateCreated(formatString: "MMMM YYYY")
         slug
         description {
           description
         }
-        tags {
-          id
-          name
+        sections {
+          tag {
+            id
+            name
+          }
         }
         coverPhoto {
           file {
