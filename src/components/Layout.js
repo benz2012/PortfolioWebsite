@@ -1,8 +1,14 @@
 import styled from 'styled-components'
 
+import media from '../utils/media'
+
 const Page = styled.div`
-  margin: 1rem 3rem 3rem 3rem;
+  margin: 20px 40px 40px 40px;
   max-width: 1200px;
+
+  ${media.phone`
+    margin: 20px 10px 40px 10px;
+  `}
 `
 
 const Center = styled.div`

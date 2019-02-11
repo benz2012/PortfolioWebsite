@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 
 import { Page, Center } from '../components/Layout'
 import TextLink from '../components/TextLink'
-import { TagLink, TagsWrapper } from '../components/Tag'
+import Tag, { TagsWrapper } from '../components/Tag'
 
 const coverContainerStyle = (width, color) => ({
   width,
@@ -42,7 +42,7 @@ export default ({ data }) => {
 
         <TagsWrapper>
           {project.sections.map(s => (
-            <TagLink key={s.tag.id} color={project.color} to={`#${s.tag.name}`}>{s.tag.name}</TagLink>
+            <Tag key={s.tag.id} color={project.color} to={`#${s.tag.name}`}>{s.tag.name}</Tag>
           ))}
         </TagsWrapper>
 

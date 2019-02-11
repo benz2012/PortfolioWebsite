@@ -6,6 +6,7 @@ const TextLink = styled(Link)`
     text-decoration: underline;
   }
   color: inherit;
+  background: none;
 `
 
 export default TextLink

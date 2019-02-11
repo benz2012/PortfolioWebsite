@@ -3,13 +3,14 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
-import Project from '../components/Project'
+import ProjectFeaturette from '../components/ProjectFeaturette'
 import { Page, Center } from '../components/Layout'
 
 const ProjectsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 40px;
 `
 
 const HeroText = styled.h1`
@@ -33,17 +34,16 @@ export default ({ data }) => {
 
       <Page>
         <Center>
-          <p>Welcome to my portfolio website</p>
-
+          <h2>Featured Work</h2>
           <ProjectsWrapper>
             {projects.map(({ node }) => {
               const { id, dateCreated, description, coverPhoto, sections, ...rest } = node
               return (
-                <Project
+                <ProjectFeaturette
                   key={id}
                   date={dateCreated}
                   description={description.description}
-                  image={coverPhoto.file.url}
+                  image={coverPhoto.fluid}
                   tags={sections.map(s => s.tag)}
                   {...rest}
                 />
@@ -77,8 +77,8 @@ export const query = graphql`
           }
         }
         coverPhoto {
-          file {
-            url
+          fluid(maxWidth: 1060 maxHeight: 540 cropFocus: CENTER) {
+            ...GatsbyContentfulFluid
           }
         }
       }
