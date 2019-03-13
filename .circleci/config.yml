@@ -9,9 +9,11 @@ jobs:
     docker:
       - image: circleci/node:10.15
 
-    working_directory: ~/repo
+    working_directory: /tmp/workspace
 
     steps:
+      - attach_workspace:
+          at: /tmp/workspace
       - checkout
 
       - restore_cache:
@@ -27,13 +29,23 @@ jobs:
       - run: yarn build
       - run: yarn test
 
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - public
+            - .firebaserc
+            - firebase.json
+
   deploy:
     docker:
       - image: circleci/node:10.15
 
-    working_directory: ~/repo
+    working_directory: /tmp/workspace
 
     steps:
+      - attach_workspace:
+          at: /tmp/workspace
+
       - run: npm set prefix=/home/circleci/npm && echo 'export PATH=$HOME/circleci/npm/bin:$PATH' >> /home/circleci/.bashrc
       - run: npm install -g firebase-tools
       - run: /home/circleci/npm/bin/firebase deploy
