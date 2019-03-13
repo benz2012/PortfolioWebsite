@@ -12,7 +12,7 @@ jobs:
     working_directory: ~/repo
 
     steps:
-      - attatch_workspace:
+      - attach_workspace:
           at: /tmp/workspace
       - checkout
 
@@ -43,7 +43,7 @@ jobs:
     working_directory: /tmp/workspace
 
     steps:
-      - attatch_workspace:
+      - attach_workspace:
           at: /tmp/workspace
 
       - run: npm set prefix=/home/circleci/npm && echo 'export PATH=$HOME/circleci/npm/bin:$PATH' >> /home/circleci/.bashrc
