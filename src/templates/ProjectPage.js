@@ -18,6 +18,11 @@ const Content = styled.div`
   margin: auto;
 `
 
+const HeaderName = styled.h1`
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+`
+
 export default ({ data }) => {
 
   const project = data.contentfulProject
@@ -26,7 +31,7 @@ export default ({ data }) => {
       <Tracking />
 
       <TextLink to="/">
-        <h1>Ben Zenker</h1>
+        <HeaderName>Ben Zenker</HeaderName>
       </TextLink>
 
       <Content>
