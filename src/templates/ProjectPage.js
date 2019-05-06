@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
+import Tracking from '../components/Tracking'
 import { Page, Center } from '../components/Layout'
 import TextLink from '../components/TextLink'
 import Tag, { TagsWrapper } from '../components/Tag'
@@ -22,6 +23,8 @@ export default ({ data }) => {
   const project = data.contentfulProject
   return (
     <Page>
+      <Tracking />
+
       <TextLink to="/">
         <h1>Ben Zenker</h1>
       </TextLink>

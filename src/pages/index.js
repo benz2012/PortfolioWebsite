@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
+import Tracking from '../components/Tracking'
 import ProjectFeaturette from '../components/ProjectFeaturette'
 import { Page, Center } from '../components/Layout'
 
@@ -27,6 +28,8 @@ export default ({ data }) => {
   const projects = data.allContentfulProject.edges
   return (
     <div>
+      <Tracking />
+
       <Img fluid={heroImage} />
       <HeroText aspectRatio={heroImage.aspectRatio}>
         Hi, I'm Ben Zenker
