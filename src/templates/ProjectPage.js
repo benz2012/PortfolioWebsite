@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
+import Tracking from '../components/Tracking'
 import { Page, Center } from '../components/Layout'
 import TextLink from '../components/TextLink'
 import Tag, { TagsWrapper } from '../components/Tag'
@@ -17,13 +18,20 @@ const Content = styled.div`
   margin: auto;
 `
 
+const HeaderName = styled.h1`
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+`
+
 export default ({ data }) => {
 
   const project = data.contentfulProject
   return (
     <Page>
+      <Tracking />
+
       <TextLink to="/">
-        <h1>Ben Zenker</h1>
+        <HeaderName>Ben Zenker</HeaderName>
       </TextLink>
 
       <Content>

@@ -3,6 +3,8 @@ const path = require(`path`)
 
 module.exports = {
   plugins: [
+    `gatsby-plugin-react-helmet`,
+
     `gatsby-plugin-styled-components`,
 
     {
@@ -30,6 +32,7 @@ module.exports = {
 
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+
     `gatsby-transformer-remark`,
   ],
 }
