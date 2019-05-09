@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
-import Tracking from '../components/Tracking'
-import { Page, Center } from '../components/Layout'
-import TextLink from '../components/TextLink'
+import HeaderNav from '../components/HeaderNav'
+import Page from '../components/Page'
+import { PageStyle, Center } from '../components/Layout'
 import Tag, { TagsWrapper } from '../components/Tag'
 
 const coverContainerStyle = (width, color) => ({
@@ -18,60 +18,63 @@ const Content = styled.div`
   margin: auto;
 `
 
-const HeaderName = styled.h1`
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-`
-
 export default ({ data }) => {
 
   const project = data.contentfulProject
   return (
     <Page>
-      <Tracking />
+      <PageStyle>
+        <HeaderNav />
 
-      <TextLink to="/">
-        <HeaderName>Ben Zenker</HeaderName>
-      </TextLink>
+        <Content>
+          <Center>
+            <Img
+              fluid={project.coverPhoto.fluid}
+              style={coverContainerStyle(
+                project.coverPhoto.fluid.sizes.split(', ')[1],
+                project.color,
+              )}
+            />
+          </Center>
 
-      <Content>
-        <Center>
-          <Img
-            fluid={project.coverPhoto.fluid}
-            style={coverContainerStyle(
-              project.coverPhoto.fluid.sizes.split(', ')[1],
-              project.color,
-            )}
-          />
-        </Center>
+          <h2>{project.name}</h2>
+          <p>{project.description.description}</p>
 
-        <h2>{project.name}</h2>
-        <p>{project.description.description}</p>
+          <TagsWrapper>
+            {project.sections.map(s => (
+              <Tag key={s.tag.id} color={project.color} to={`#${s.tag.name}`}>{s.tag.name}</Tag>
+            ))}
+          </TagsWrapper>
 
-        <TagsWrapper>
           {project.sections.map(s => (
-            <Tag key={s.tag.id} color={project.color} to={`#${s.tag.name}`}>{s.tag.name}</Tag>
-          ))}
-        </TagsWrapper>
+            <div key={s.id} id={s.tag.name}>
+              <h3>{`${s.tag.name.charAt(0).toUpperCase()}${s.tag.name.slice(1)}`}</h3>
 
-        {project.sections.map(s => (
-          <div key={s.id} id={s.tag.name}>
-            <h3>{`${s.tag.name.charAt(0).toUpperCase()}${s.tag.name.slice(1)}`}</h3>
-            <img alt="" src={s.thumbnail.file.url} />
-            <div dangerouslySetInnerHTML={{ __html: s.body.childMarkdownRemark.html }} />
-            <p><a href={s.url}>{s.url}</a></p>
-            {s.additionalMedia && s.additionalMedia
-              .filter(media => media.file.contentType.includes('image'))
-              .map(media => (
-                <React.Fragment key={media.id}>
-                  <img alt="" src={media.file.url} />
-                  <p>{media.description}</p>
-                </React.Fragment>
-              ))
-            }
-          </div>
-        ))}
-      </Content>
+              {s.thumbnail && <img alt="" src={s.thumbnail.file.url} />}
+
+              {s.body &&
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: s.body.childMarkdownRemark.html
+                  }}
+                />
+              }
+
+              <p><a href={s.url}>{s.url}</a></p>
+
+              {s.additionalMedia && s.additionalMedia
+                .filter(media => media.file.contentType.includes('image'))
+                .map(media => (
+                  <React.Fragment key={media.id}>
+                    <img alt="" src={media.file.url} />
+                    <p>{media.description}</p>
+                  </React.Fragment>
+                ))
+              }
+            </div>
+          ))}
+        </Content>
+      </PageStyle>
     </Page>
   )
 }

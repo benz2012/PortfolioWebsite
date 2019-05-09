@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import media from '../utils/media'
 
-const Page = styled.div`
+const PageStyle = styled.div`
   margin: auto;
   padding: 20px 40px 40px 40px;
   max-width: 1200px;
@@ -20,6 +20,6 @@ const Center = styled.div`
 `
 
 export {
-  Page,
+  PageStyle,
   Center,
 }
