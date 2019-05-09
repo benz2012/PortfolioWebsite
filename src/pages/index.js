@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
-import Tracking from '../components/Tracking'
 import ProjectFeaturette from '../components/ProjectFeaturette'
-import { Page, Center } from '../components/Layout'
+import Page from '../components/Page'
+import { PageStyle, Center } from '../components/Layout'
+import TextLink from '../components/TextLink'
 
 const ProjectsWrapper = styled.div`
   display: flex;
@@ -27,15 +28,13 @@ export default ({ data }) => {
   const heroImage = data.file.childImageSharp.fluid
   const projects = data.allContentfulProject.edges
   return (
-    <div>
-      <Tracking />
-
+    <Page>
       <Img fluid={heroImage} />
       <HeroText aspectRatio={heroImage.aspectRatio}>
         Hi, I'm Ben Zenker
       </HeroText>
 
-      <Page>
+      <PageStyle>
         <Center>
           <h2>Featured Work</h2>
           <ProjectsWrapper>
@@ -53,16 +52,23 @@ export default ({ data }) => {
               )
             })}
           </ProjectsWrapper>
+          <TextLink to="/projects/all">
+            <h3 style={{ marginTop: 0 }}>View All Projects →</h3>
+          </TextLink>
+
+          {/* Tag Search Blipper goes here */}
         </Center>
-      </Page>
-    </div>
+      </PageStyle>
+    </Page>
   )
 }
 
-// TODO: Grab cover photo as fluid
 export const query = graphql`
 {
-  allContentfulProject(sort: { fields: dateCreated, order: DESC }) {
+  allContentfulProject(
+    filter: { featured: { eq: true } }
+    sort: { fields: dateCreated, order: DESC }
+  ) {
     edges {
       node {
         id
