@@ -56,6 +56,10 @@ const Description = styled.p`
   margin-bottom: 15px;
 `
 
+const DateString = styled.small`
+  color: rgba(0, 0, 0, 0.50)
+`
+
 export default ({ name, date, description, image, color, tags, slug }) => {
   const rgbColor = hexToRGB(color)
   return (
@@ -68,7 +72,7 @@ export default ({ name, date, description, image, color, tags, slug }) => {
         </TitleOverImage>
       </ColoredImageContainer>
 
-      <small><em>{date}</em></small>
+      <DateString>{date}</DateString>
       <Description>{description}</Description>
 
       <TagsWrapper>

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { PageStyle } from './Layout'
-// import media from '../utils/media'
+import media from '../utils/media'
 
 const Footer = styled.footer`
   color: rgb(222, 229, 238);
@@ -17,15 +17,32 @@ const Footer = styled.footer`
 `
 
 const Container = styled(PageStyle)`
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto 2fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "avatar about social";
+  grid-gap: 30px;
+
+  ${media.tablet`
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "avatar social"
+      "about about";
+    align-items: center;
+    justify-items: center;
+  `}
+
+  ${media.phone`
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "avatar"
+      "social"
+      "about";
+  `}
 `
 
-const Segment = styled.div`
-  padding: 10px;
-`
+const Segment = styled.div``
 
 const Bottom = styled.h4`
   color: rgb(83, 96, 110);
