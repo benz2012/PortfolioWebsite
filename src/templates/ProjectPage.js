@@ -1,25 +1,19 @@
 import React from 'react'
-import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 import HeaderNav from '../components/HeaderNav'
 import Page from '../components/Page'
-import { PageStyle, Center } from '../components/Layout'
+import { PageStyle, Center, Content } from '../components/Layout'
 import Tag, { TagsWrapper } from '../components/Tag'
+import Section from '../components/Section'
 
 const coverContainerStyle = (width, color) => ({
   width,
   boxShadow: `10px 10px 0 0 ${color}`,
 })
 
-const Content = styled.div`
-  max-width: 700px;
-  margin: auto;
-`
-
 export default ({ data }) => {
-
   const project = data.contentfulProject
   return (
     <Page>
@@ -46,33 +40,7 @@ export default ({ data }) => {
             ))}
           </TagsWrapper>
 
-          {project.sections.map(s => (
-            <div key={s.id} id={s.tag.name}>
-              <h3>{`${s.tag.name.charAt(0).toUpperCase()}${s.tag.name.slice(1)}`}</h3>
-
-              {s.thumbnail && <img alt="" src={s.thumbnail.file.url} />}
-
-              {s.body &&
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: s.body.childMarkdownRemark.html
-                  }}
-                />
-              }
-
-              <p><a href={s.url}>{s.url}</a></p>
-
-              {s.additionalMedia && s.additionalMedia
-                .filter(media => media.file.contentType.includes('image'))
-                .map(media => (
-                  <React.Fragment key={media.id}>
-                    <img alt="" src={media.file.url} />
-                    <p>{media.description}</p>
-                  </React.Fragment>
-                ))
-              }
-            </div>
-          ))}
+          {project.sections.map(Section)}
         </Content>
       </PageStyle>
     </Page>
@@ -80,6 +48,7 @@ export default ({ data }) => {
 }
 
 // TODO: Implement additionalMedia field once atleast one section holds it
+// TODO: Fluid images for thumbnail, aditional, etc
 export const query = graphql`
   query($slug: String!) {
     contentfulProject(slug: { eq: $slug }) {

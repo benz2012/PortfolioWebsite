@@ -19,7 +19,13 @@ const Center = styled.div`
   justify-content: center;
 `
 
+const Content = styled.div`
+  max-width: 700px;
+  margin: auto;
+`
+
 export {
   PageStyle,
   Center,
+  Content,
 }
