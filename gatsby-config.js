@@ -18,8 +18,16 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_PREVIEW_KEY,
-        host: `preview.contentful.com`,
+        accessToken: (
+          process.env.NODE_ENV !== 'production' ?
+            process.env.CONTENTFUL_PREVIEW_KEY :
+            process.env.CONTENTFUL_DELIVERY_KEY
+        ),
+        host: (
+          process.env.NODE_ENV !== 'production' ?
+          `preview.contentful.com` :
+          undefined
+        ),
       },
     },
 
