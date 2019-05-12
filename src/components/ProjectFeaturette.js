@@ -48,8 +48,8 @@ const TitleOverImage = styled(TextLink)`
 
 const Title = styled.h2`
   color: inherit;
-  text-shadow: none;
   margin-bottom: 0;
+  text-shadow: 0px 0px 4px ${props => `rgba(${props.r}, ${props.g}, ${props.b}, 0.3)`};
 `
 
 const Description = styled.p`
@@ -68,11 +68,11 @@ export default ({ name, date, description, image, color, tags, slug }) => {
         <Img fluid={image} />
         <ImageColorOverlay {...rgbColor} />
         <TitleOverImage color={color} to={`/projects/${slug}/`}>
-          <Title>{name}</Title>
+          <Title {...rgbColor}>{name}</Title>
         </TitleOverImage>
       </ColoredImageContainer>
 
-      <DateString>{date}</DateString>
+      <DateString>{date || 'Ongoing'}</DateString>
       <Description>{description}</Description>
 
       <TagsWrapper>

@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -13,8 +14,17 @@ const coverContainerStyle = (width, color) => ({
   boxShadow: `10px 10px 0 0 ${color}`,
 })
 
+const DateString = styled.small`
+  color: rgba(0, 0, 0, 0.50)
+`
+
 export default ({ data }) => {
-  const project = data.contentfulProject
+  const { coverPhoto, color, name, description, dateCreated,
+    dateCompleted, sections } = data.contentfulProject
+  const dateStamp = dateCompleted ?
+    `${dateCreated} - ${dateCompleted}` :
+    'Ongoing'
+
   return (
     <Page>
       <PageStyle>
@@ -23,24 +33,27 @@ export default ({ data }) => {
         <Content>
           <Center>
             <Img
-              fluid={project.coverPhoto.fluid}
+              fluid={coverPhoto.fluid}
               style={coverContainerStyle(
-                project.coverPhoto.fluid.sizes.split(', ')[1],
-                project.color,
+                coverPhoto.fluid.sizes.split(', ')[1],
+                color,
               )}
             />
           </Center>
 
-          <h2>{project.name}</h2>
-          <p>{project.description.description}</p>
+          <h2>{name}</h2>
+          <DateString>{dateStamp}</DateString>
+          <p>{description.description}</p>
 
           <TagsWrapper>
-            {project.sections.map(s => (
-              <Tag key={s.tag.id} color={project.color} to={`#${s.tag.name}`}>{s.tag.name}</Tag>
+            {sections.map(s => (
+              <Tag key={s.tag.id} color={color} to={`#${s.tag.name}`}>{s.tag.name}</Tag>
             ))}
           </TagsWrapper>
 
-          {project.sections.map(Section)}
+          {sections.map(({ id, ...rest }) => (
+            <Section key={id} {...rest} />
+          ))}
         </Content>
       </PageStyle>
     </Page>
@@ -62,6 +75,8 @@ export const query = graphql`
           ...GatsbyContentfulFluid
         }
       }
+      dateCreated(formatString: "MMMM YYYY")
+      dateCompleted(formatString: "MMMM YYYY")
       sections {
         id
         header

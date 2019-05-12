@@ -36,14 +36,18 @@ export default ({ data }) => {
 
       <PageStyle>
         <Center>
-          <h2>Featured Work</h2>
+          <h2>Featured Projects</h2>
           <ProjectsWrapper>
             {projects.map(({ node }) => {
-              const { id, dateCreated, description, coverPhoto, sections, ...rest } = node
+              const { id, dateCreated, dateCompleted, description,
+                coverPhoto, sections, ...rest } = node
+              const dateStamp = dateCompleted ?
+                `${dateCreated} - ${dateCompleted}` :
+                'Ongoing'
               return (
                 <ProjectFeaturette
                   key={id}
-                  date={dateCreated}
+                  date={dateStamp}
                   description={description.description}
                   image={coverPhoto.fluid}
                   tags={sections.map(s => s.tag)}
@@ -74,7 +78,8 @@ export const query = graphql`
         id
         name
         color
-        dateCreated(formatString: "MMMM YYYY")
+        dateCreated(formatString: "MMM YYYY")
+        dateCompleted(formatString: "MMM YYYY")
         slug
         description {
           description

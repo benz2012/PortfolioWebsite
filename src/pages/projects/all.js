@@ -25,11 +25,15 @@ export default ({ data }) => {
           <h2 style={{ marginTop: 0 }}>All Projects</h2>
           <ProjectsWrapper>
             {projects.map(({ node }) => {
-              const { id, dateCreated, description, coverPhoto, sections, ...rest } = node
+              const { id, dateCreated, dateCompleted, description,
+                coverPhoto, sections, ...rest } = node
+              const dateStamp = dateCompleted ?
+                `${dateCreated} - ${dateCompleted}` :
+                'Ongoing'
               return (
                 <ProjectFeaturette
                   key={id}
-                  date={dateCreated}
+                  date={dateStamp}
                   description={description.description}
                   image={coverPhoto.fluid}
                   tags={sections.map(s => s.tag)}
@@ -47,14 +51,15 @@ export default ({ data }) => {
 export const query = graphql`
 {
   allContentfulProject(
-    sort: { fields: dateCreated, order: DESC }
+    sort: { fields: dateCompleted, order: DESC }
   ) {
     edges {
       node {
         id
         name
         color
-        dateCreated(formatString: "MMMM YYYY")
+        dateCreated(formatString: "MMM YYYY")
+        dateCompleted(formatString: "MMM YYYY")
         slug
         description {
           description

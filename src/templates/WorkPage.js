@@ -36,6 +36,17 @@ const ProjectLink = styled(TextLink)`
   }
 `
 
+const sortSections = (a, b) => {
+  const field = 'dateCompleted'
+  const dateA = a.node.project[0][field]
+  const dateB = b.node.project[0][field]
+  if (dateA === null) return -1
+  if (dateB === null) return 1
+  if (dateA < dateB) return 1
+  if (dateA > dateB) return -1
+  return 0
+}
+
 export default ({ data, pageContext }) => {
   const sections = data.allContentfulSection.edges
   const tag = pageContext
@@ -48,16 +59,17 @@ export default ({ data, pageContext }) => {
           <h1>{titleCase(tag.name)}</h1>
           <p>{tag.description.description}</p>
 
-          {sections.map(({ node }) => {
+          {sections.sort(sortSections).map(({ node }) => {
             const { id, project, ...rest } = node
+            const linkedProject = project[0]
             return (
-              <SectionFromProject>
+              <SectionFromProject key={id}>
                 <Header>
                   <TagSectionName>{titleCase(tag.name)}</TagSectionName>
                   <Project>
                     From&nbsp;
-                    <ProjectLink to={`/projects/${project[0].slug}`}>
-                      {project[0].name}
+                    <ProjectLink to={`/projects/${linkedProject.slug}`}>
+                      {linkedProject.name}
                     </ProjectLink>
                   </Project>
                 </Header>
@@ -72,16 +84,17 @@ export default ({ data, pageContext }) => {
   )
 }
 
-// TODO: sort by date
 export const query = graphql`
   query($name: String!) {
-    allContentfulSection(filter: {
-      tag: {
-        name: {
-          eq: $name
+    allContentfulSection(
+      filter: {
+        tag: {
+          name: {
+            eq: $name
+          }
         }
       }
-    }) {
+    ) {
       edges {
         node {
           id
@@ -108,6 +121,7 @@ export const query = graphql`
           project {
             name
             slug
+            dateCompleted
           }
         }
       }
