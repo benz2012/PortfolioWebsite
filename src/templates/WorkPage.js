@@ -78,6 +78,10 @@ export default ({ data, pageContext }) => {
               </SectionFromProject>
             )
           })}
+
+          {sections.length === 0 && (
+            <p><em>There are no sections related to work of this type.</em></p>
+          )}
         </Content>
       </PageStyle>
     </Page>

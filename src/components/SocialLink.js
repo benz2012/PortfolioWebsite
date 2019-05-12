@@ -22,11 +22,11 @@ const LinkContainer = styled.a`
   text-shadow: none;
 
   &:hover {
-    color: rgb(34, 45, 57);
-    background-color: rgb(222, 229, 238);
+    color: rgb(37, 52, 62);
+    background-color: rgb(209, 213, 212);
 
     & > i {
-      color: rgb(34, 45, 57);
+      color: rgb(37, 52, 62);
     }
   }
 `

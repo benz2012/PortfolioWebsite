@@ -7,6 +7,7 @@ import ProjectFeaturette from '../components/ProjectFeaturette'
 import Page from '../components/Page'
 import { PageStyle, Center } from '../components/Layout'
 import TextLink from '../components/TextLink'
+import TagCard, { TagCardsContainer } from '../components/TagCard'
 
 const ProjectsWrapper = styled.div`
   display: flex;
@@ -24,9 +25,16 @@ const HeroText = styled.h1`
   color: white;
 `
 
+const WorkContainer = styled.div`
+  background-color: #D1D5D4;
+`
+
 export default ({ data }) => {
-  const heroImage = data.file.childImageSharp.fluid
   const projects = data.allContentfulProject.edges
+  const tags = data.allContentfulTag.edges
+  const heroImage = data.hero.childImageSharp.fluid
+  const workDescrip = data.work.childMarkdownRemark
+
   return (
     <Page>
       <Img fluid={heroImage} />
@@ -59,10 +67,26 @@ export default ({ data }) => {
           <TextLink to="/projects/all">
             <h3 style={{ marginTop: 0 }}>View All Projects →</h3>
           </TextLink>
-
-          {/* Tag Search Blipper goes here */}
         </Center>
       </PageStyle>
+
+      <WorkContainer>
+        <PageStyle>
+          <Center>
+            <h2>Work Types</h2>
+            <p>{workDescrip.rawMarkdownBody}</p>
+            <TagCardsContainer>
+              {tags.map(({ node }) => (
+                <TagCard
+                  key={node.id}
+                  name={node.name}
+                  description={node.description.description}
+                />
+              ))}
+            </TagCardsContainer>
+          </Center>
+        </PageStyle>
+      </WorkContainer>
     </Page>
   )
 }
@@ -99,11 +123,29 @@ export const query = graphql`
     }
   }
 
-  file(relativePath: { eq: "hero.jpg" }) {
+  allContentfulTag(sort: { fields: name, order: ASC }) {
+    edges {
+      node {
+        id
+        name
+        description {
+          description
+        }
+      }
+    }
+  }
+
+  hero: file(relativePath: { eq: "hero.jpg" }) {
     childImageSharp {
       fluid(maxWidth: 4000 maxHeight: 2150 cropFocus: CENTER) {
         ...GatsbyImageSharpFluid
       }
+    }
+  }
+
+  work: file(relativePath: { eq: "WorkTypes.md" }) {
+    childMarkdownRemark {
+      rawMarkdownBody
     }
   }
 }

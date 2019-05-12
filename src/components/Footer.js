@@ -4,15 +4,15 @@ import { PageStyle } from './Layout'
 import media from '../utils/media'
 
 const Footer = styled.footer`
-  color: rgb(222, 229, 238);
-  background-color: rgb(34, 45, 57);
+  color: rgb(209, 213, 212);
+  background-color: rgb(37, 52, 62);
 
   & * {
-    color: rgb(222, 229, 238);
+    color: rgb(209, 213, 212);
   }
 
   & hr {
-    background-color: rgba(222, 229, 238, 0.2);
+    background-color: rgba(209, 213, 212, 0.2);
   }
 `
 
@@ -45,7 +45,7 @@ const Container = styled(PageStyle)`
 const Segment = styled.div``
 
 const Bottom = styled.h4`
-  color: rgb(83, 96, 110);
+  color: rgb(68, 87, 105);
   margin-top: 1rem;
   margin-bottom: 3rem;
 `
