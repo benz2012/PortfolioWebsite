@@ -39,8 +39,7 @@ export default ({ data }) => {
   return (
     <Page>
       <Metadata
-        title="I'm Ben Zenker"
-        useDefaultTitle
+        noTitleTemplate
         description="I am filled with both creative and technological
           passions. Learn more on my portfolio website."
         image={heroImage.src}

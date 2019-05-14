@@ -9,10 +9,7 @@ import SocialLink, { LinksSegment } from './SocialLink'
 
 export default ({ children }) => (
   <Fragment>
-    <Helmet
-      titleTemplate="%s | Zenker"
-      defaultTitle="I'm Ben Zenker"
-    >
+    <Helmet>
       {/* Favicon */}
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
