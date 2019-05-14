@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 
 import ProjectFeaturette from '../components/ProjectFeaturette'
 import Page from '../components/Page'
+import Metadata from '../components/Metadata'
 import { PageStyle, Center } from '../components/Layout'
 import TextLink from '../components/TextLink'
 import TagCard, { TagCardsContainer } from '../components/TagCard'
@@ -37,6 +38,14 @@ export default ({ data }) => {
 
   return (
     <Page>
+      <Metadata
+        title="I'm Ben Zenker"
+        useDefaultTitle
+        description="I am filled with both creative and technological
+          passions. Learn more on my portfolio website."
+        image={heroImage.src}
+      />
+
       <Img fluid={heroImage} />
       <HeroText aspectRatio={heroImage.aspectRatio}>
         Hi, I'm Ben Zenker

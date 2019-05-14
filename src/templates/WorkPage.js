@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
 
 import HeaderNav from '../components/HeaderNav'
 import Page from '../components/Page'
+import Metadata from '../components/Metadata'
 import { PageStyle, Content } from '../components/Layout'
 import Section from '../components/Section'
 import { titleCase } from '../utils/transform'
@@ -48,15 +48,16 @@ const sortSections = (a, b) => {
   return 0
 }
 
-export default ({ data, pageContext }) => {
+export default ({ data, pageContext, location }) => {
   const sections = data.allContentfulSection.edges
   const { name, description } = pageContext
   return (
     <Page>
-      <Helmet>
-        <title>{titleCase(name)}</title>
-        <meta name="description" content={description.description} />
-      </Helmet>
+      <Metadata
+        title={titleCase(name)}
+        description={description.description}
+        pathname={location.pathname}
+      />
 
       <PageStyle>
         <HeaderNav />

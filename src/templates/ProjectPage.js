@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
 
 import HeaderNav from '../components/HeaderNav'
 import Page from '../components/Page'
+import Metadata from '../components/Metadata'
 import { PageStyle, Center, Content } from '../components/Layout'
 import Tag, { TagsWrapper } from '../components/Tag'
 import Section from '../components/Section'
@@ -19,7 +19,7 @@ const DateString = styled.small`
   color: rgba(0, 0, 0, 0.50)
 `
 
-export default ({ data }) => {
+export default ({ data, location }) => {
   const { coverPhoto, color, name, description, dateCreated,
     dateCompleted, sections } = data.contentfulProject
   const dateStamp = dateCompleted ?
@@ -28,10 +28,12 @@ export default ({ data }) => {
 
   return (
     <Page>
-      <Helmet>
-        <title>{name}</title>
-        <meta name="description" content={description.description} />
-      </Helmet>
+      <Metadata
+        title={name}
+        description={description.description}
+        pathname={location.pathname}
+        image={coverPhoto.fluid.src}
+      />
 
       <PageStyle>
         <HeaderNav />

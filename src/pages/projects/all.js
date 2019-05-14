@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
 
 import HeaderNav from '../../components/HeaderNav'
 import ProjectFeaturette from '../../components/ProjectFeaturette'
 import Page from '../../components/Page'
+import Metadata from '../../components/Metadata'
 import { PageStyle, Center } from '../../components/Layout'
 
 const ProjectsWrapper = styled.div`
@@ -15,14 +15,15 @@ const ProjectsWrapper = styled.div`
   margin-top: 40px;
 `
 
-export default ({ data }) => {
+export default ({ data, location }) => {
   const projects = data.allContentfulProject.edges
   return (
     <Page>
-      <Helmet>
-        <title>All Projects</title>
-        <meta name="description" content="Preview all projects both completed and ongoing." />
-      </Helmet>
+      <Metadata
+        title="All Projects"
+        description="Preview all projects both completed and ongoing."
+        pathname={location.pathname}
+      />
 
       <PageStyle>
         <HeaderNav />
