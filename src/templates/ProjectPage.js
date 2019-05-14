@@ -16,7 +16,7 @@ const coverContainerStyle = (width, color) => ({
 })
 
 const DateString = styled.small`
-  color: rgba(0, 0, 0, 0.50)
+  color: rgba(0, 0, 0, 0.50);
 `
 
 export default ({ data, location }) => {

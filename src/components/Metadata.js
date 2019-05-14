@@ -25,7 +25,7 @@ export default ({ title, description, pathname, image, noTitleTemplate }) => (
       pageTitle = noTitleTemplate ? pageTitle : `${pageTitle} | Zenker`
 
       const twitterImage = image && (
-        <meta name="twitter:image" content={`${siteUrl}${image}`} />
+        <meta name="twitter:image" content={image} />
       )
       const twitterCard = image ? (
         <meta name="twitter:card" content="summary_large_image" />
@@ -46,7 +46,7 @@ export default ({ title, description, pathname, image, noTitleTemplate }) => (
           <meta property="og:url" content={`${siteUrl}${pathname || "/"}`} />
 
           {image &&
-            <meta property="og:image" content={`${siteUrl}${image}`} />
+            <meta property="og:image" content={image} />
           }
 
           {description &&
