@@ -43,6 +43,7 @@ export default ({ data }) => {
         description="I am filled with both creative and technological
           passions. Learn more on my portfolio website."
         image={heroImage.src}
+        relativeImage
       />
 
       <Img fluid={heroImage} />

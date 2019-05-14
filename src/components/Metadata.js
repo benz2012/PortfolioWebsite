@@ -2,7 +2,9 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-export default ({ title, description, pathname, image, noTitleTemplate }) => (
+export default ({
+  title, description, pathname, image, noTitleTemplate, relativeImage,
+}) => (
   <StaticQuery
     query={graphql`
       {
@@ -24,10 +26,13 @@ export default ({ title, description, pathname, image, noTitleTemplate }) => (
       pageTitle = title || pageTitle
       pageTitle = noTitleTemplate ? pageTitle : `${pageTitle} | Zenker`
 
-      const twitterImage = image && (
-        <meta name="twitter:image" content={image} />
+      let pageImage = image
+      pageImage = relativeImage ? `${siteUrl}${image}` : pageImage
+
+      const twitterImage = pageImage && (
+        <meta name="twitter:image" content={pageImage} />
       )
-      const twitterCard = image ? (
+      const twitterCard = pageImage ? (
         <meta name="twitter:card" content="summary_large_image" />
       ) : (
         <meta name="twitter:card" content="summary" />
@@ -45,8 +50,8 @@ export default ({ title, description, pathname, image, noTitleTemplate }) => (
           <meta property="og:type" content="website" />
           <meta property="og:url" content={`${siteUrl}${pathname || "/"}`} />
 
-          {image &&
-            <meta property="og:image" content={image} />
+          {pageImage &&
+            <meta property="og:image" content={pageImage} />
           }
 
           {description &&
