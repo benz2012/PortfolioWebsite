@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 import HeaderNav from '../../components/HeaderNav'
 import ProjectFeaturette from '../../components/ProjectFeaturette'
@@ -18,6 +19,11 @@ export default ({ data }) => {
   const projects = data.allContentfulProject.edges
   return (
     <Page>
+      <Helmet>
+        <title>All Projects</title>
+        <meta name="description" content="Preview all projects both completed and ongoing." />
+      </Helmet>
+
       <PageStyle>
         <HeaderNav />
 

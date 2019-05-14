@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 import HeaderNav from '../components/HeaderNav'
 import Page from '../components/Page'
@@ -27,6 +28,11 @@ export default ({ data }) => {
 
   return (
     <Page>
+      <Helmet>
+        <title>{name}</title>
+        <meta name="description" content={description.description} />
+      </Helmet>
+
       <PageStyle>
         <HeaderNav />
 

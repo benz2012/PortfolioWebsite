@@ -1,6 +1,7 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
 
 import HeaderNav from '../components/HeaderNav'
 import Page from '../components/Page'
@@ -49,15 +50,20 @@ const sortSections = (a, b) => {
 
 export default ({ data, pageContext }) => {
   const sections = data.allContentfulSection.edges
-  const tag = pageContext
+  const { name, description } = pageContext
   return (
     <Page>
+      <Helmet>
+        <title>{titleCase(name)}</title>
+        <meta name="description" content={description.description} />
+      </Helmet>
+
       <PageStyle>
         <HeaderNav />
 
         <Content>
-          <h1>{titleCase(tag.name)}</h1>
-          <p>{tag.description.description}</p>
+          <h1>{titleCase(name)}</h1>
+          <p>{description.description}</p>
 
           {sections.sort(sortSections).map(({ node }) => {
             const { id, project, ...rest } = node
@@ -65,7 +71,7 @@ export default ({ data, pageContext }) => {
             return (
               <SectionFromProject key={id}>
                 <Header>
-                  <TagSectionName>{titleCase(tag.name)}</TagSectionName>
+                  <TagSectionName>{titleCase(name)}</TagSectionName>
                   <Project>
                     From&nbsp;
                     <ProjectLink to={`/projects/${linkedProject.slug}`}>
