@@ -32,7 +32,7 @@ export default ({ data, location }) => {
         title={name}
         description={description.description}
         pathname={location.pathname}
-        image={coverPhoto.fluid.src}
+        image={`https:${coverPhoto.fluid.src}`}
       />
 
       <PageStyle>
