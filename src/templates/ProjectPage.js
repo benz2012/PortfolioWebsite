@@ -1,82 +1,75 @@
 import React from 'react'
 import styled from 'styled-components'
-import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 
-import Tracking from '../components/Tracking'
-import { Page, Center } from '../components/Layout'
-import TextLink from '../components/TextLink'
+import HeaderNav from '../components/HeaderNav'
+import Page from '../components/Page'
+import Metadata from '../components/Metadata'
+import { PageStyle, Center, Content } from '../components/Layout'
 import Tag, { TagsWrapper } from '../components/Tag'
+import Section from '../components/Section'
 
 const coverContainerStyle = (width, color) => ({
   width,
   boxShadow: `10px 10px 0 0 ${color}`,
 })
 
-const Content = styled.div`
-  max-width: 700px;
-  margin: auto;
+const DateString = styled.small`
+  color: rgba(0, 0, 0, 0.50)
 `
 
-const HeaderName = styled.h1`
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-`
+export default ({ data, location }) => {
+  const { coverPhoto, color, name, description, dateCreated,
+    dateCompleted, sections } = data.contentfulProject
+  const dateStamp = dateCompleted ?
+    `${dateCreated} - ${dateCompleted}` :
+    'Ongoing'
 
-export default ({ data }) => {
-
-  const project = data.contentfulProject
   return (
     <Page>
-      <Tracking />
+      <Metadata
+        title={name}
+        description={description.description}
+        pathname={location.pathname}
+        image={coverPhoto.fluid.src}
+      />
 
-      <TextLink to="/">
-        <HeaderName>Ben Zenker</HeaderName>
-      </TextLink>
+      <PageStyle>
+        <HeaderNav />
 
-      <Content>
-        <Center>
-          <Img
-            fluid={project.coverPhoto.fluid}
-            style={coverContainerStyle(
-              project.coverPhoto.fluid.sizes.split(', ')[1],
-              project.color,
-            )}
-          />
-        </Center>
+        <Content>
+          <Center>
+            <Img
+              fluid={coverPhoto.fluid}
+              style={coverContainerStyle(
+                coverPhoto.fluid.sizes.split(', ')[1],
+                color,
+              )}
+            />
+          </Center>
 
-        <h2>{project.name}</h2>
-        <p>{project.description.description}</p>
+          <h2>{name}</h2>
+          <DateString>{dateStamp}</DateString>
+          <p>{description.description}</p>
 
-        <TagsWrapper>
-          {project.sections.map(s => (
-            <Tag key={s.tag.id} color={project.color} to={`#${s.tag.name}`}>{s.tag.name}</Tag>
+          <TagsWrapper>
+            {sections.map(s => (
+              <Tag key={s.tag.id} color={color} to={`#${s.tag.name}`}>{s.tag.name}</Tag>
+            ))}
+          </TagsWrapper>
+
+          {sections.map(({ id, ...rest }) => (
+            <Section key={id} {...rest} />
           ))}
-        </TagsWrapper>
-
-        {project.sections.map(s => (
-          <div key={s.id} id={s.tag.name}>
-            <h3>{`${s.tag.name.charAt(0).toUpperCase()}${s.tag.name.slice(1)}`}</h3>
-            <img alt="" src={s.thumbnail.file.url} />
-            <div dangerouslySetInnerHTML={{ __html: s.body.childMarkdownRemark.html }} />
-            <p><a href={s.url}>{s.url}</a></p>
-            {s.additionalMedia && s.additionalMedia
-              .filter(media => media.file.contentType.includes('image'))
-              .map(media => (
-                <React.Fragment key={media.id}>
-                  <img alt="" src={media.file.url} />
-                  <p>{media.description}</p>
-                </React.Fragment>
-              ))
-            }
-          </div>
-        ))}
-      </Content>
+        </Content>
+      </PageStyle>
     </Page>
   )
 }
 
 // TODO: Implement additionalMedia field once atleast one section holds it
+// TODO: Fluid images for thumbnail, aditional, etc
 export const query = graphql`
   query($slug: String!) {
     contentfulProject(slug: { eq: $slug }) {
@@ -90,6 +83,8 @@ export const query = graphql`
           ...GatsbyContentfulFluid
         }
       }
+      dateCreated(formatString: "MMMM YYYY")
+      dateCompleted(formatString: "MMMM YYYY")
       sections {
         id
         header

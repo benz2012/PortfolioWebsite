@@ -1,0 +1,1 @@
+Categorical tags on this site navigate you to a page where you can view my work related to that category. They represent the areas of skill I am most passionate about, and help tell a broader story than any one project could.

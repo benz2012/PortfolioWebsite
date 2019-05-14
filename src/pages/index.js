@@ -3,9 +3,12 @@ import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
-import Tracking from '../components/Tracking'
 import ProjectFeaturette from '../components/ProjectFeaturette'
-import { Page, Center } from '../components/Layout'
+import Page from '../components/Page'
+import Metadata from '../components/Metadata'
+import { PageStyle, Center } from '../components/Layout'
+import TextLink from '../components/TextLink'
+import TagCard, { TagCardsContainer } from '../components/TagCard'
 
 const ProjectsWrapper = styled.div`
   display: flex;
@@ -23,28 +26,45 @@ const HeroText = styled.h1`
   color: white;
 `
 
+const WorkContainer = styled.div`
+  background-color: #D1D5D4;
+`
+
 export default ({ data }) => {
-  const heroImage = data.file.childImageSharp.fluid
   const projects = data.allContentfulProject.edges
+  const tags = data.allContentfulTag.edges
+  const heroImage = data.hero.childImageSharp.fluid
+  const workDescrip = data.work.childMarkdownRemark
+
   return (
-    <div>
-      <Tracking />
+    <Page>
+      <Metadata
+        title="I'm Ben Zenker"
+        useDefaultTitle
+        description="I am filled with both creative and technological
+          passions. Learn more on my portfolio website."
+        image={heroImage.src}
+      />
 
       <Img fluid={heroImage} />
       <HeroText aspectRatio={heroImage.aspectRatio}>
         Hi, I'm Ben Zenker
       </HeroText>
 
-      <Page>
+      <PageStyle>
         <Center>
-          <h2>Featured Work</h2>
+          <h2>Featured Projects</h2>
           <ProjectsWrapper>
             {projects.map(({ node }) => {
-              const { id, dateCreated, description, coverPhoto, sections, ...rest } = node
+              const { id, dateCreated, dateCompleted, description,
+                coverPhoto, sections, ...rest } = node
+              const dateStamp = dateCompleted ?
+                `${dateCreated} - ${dateCompleted}` :
+                'Ongoing'
               return (
                 <ProjectFeaturette
                   key={id}
-                  date={dateCreated}
+                  date={dateStamp}
                   description={description.description}
                   image={coverPhoto.fluid}
                   tags={sections.map(s => s.tag)}
@@ -53,22 +73,46 @@ export default ({ data }) => {
               )
             })}
           </ProjectsWrapper>
+          <TextLink to="/projects/all">
+            <h3 style={{ marginTop: 0 }}>View All Projects →</h3>
+          </TextLink>
         </Center>
-      </Page>
-    </div>
+      </PageStyle>
+
+      <WorkContainer>
+        <PageStyle>
+          <Center>
+            <h2>Work Types</h2>
+            <p>{workDescrip.rawMarkdownBody}</p>
+            <TagCardsContainer>
+              {tags.map(({ node }) => (
+                <TagCard
+                  key={node.id}
+                  name={node.name}
+                  description={node.description.description}
+                />
+              ))}
+            </TagCardsContainer>
+          </Center>
+        </PageStyle>
+      </WorkContainer>
+    </Page>
   )
 }
 
-// TODO: Grab cover photo as fluid
 export const query = graphql`
 {
-  allContentfulProject(sort: { fields: dateCreated, order: DESC }) {
+  allContentfulProject(
+    filter: { featured: { eq: true } }
+    sort: { fields: dateCreated, order: DESC }
+  ) {
     edges {
       node {
         id
         name
         color
-        dateCreated(formatString: "MMMM YYYY")
+        dateCreated(formatString: "MMM YYYY")
+        dateCompleted(formatString: "MMM YYYY")
         slug
         description {
           description
@@ -88,11 +132,29 @@ export const query = graphql`
     }
   }
 
-  file(relativePath: { eq: "hero.jpg" }) {
+  allContentfulTag(sort: { fields: name, order: ASC }) {
+    edges {
+      node {
+        id
+        name
+        description {
+          description
+        }
+      }
+    }
+  }
+
+  hero: file(relativePath: { eq: "hero.jpg" }) {
     childImageSharp {
       fluid(maxWidth: 4000 maxHeight: 2150 cropFocus: CENTER) {
         ...GatsbyImageSharpFluid
       }
+    }
+  }
+
+  work: file(relativePath: { eq: "WorkTypes.md" }) {
+    childMarkdownRemark {
+      rawMarkdownBody
     }
   }
 }

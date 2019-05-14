@@ -12,7 +12,7 @@ const TagsWrapper = styled.div`
 
 const TagContainer = styled.div`
   height: 32px;
-  border-radius: 4px 16px 4px 16px;
+  border-radius: 16px 16px 16px 16px;
 
   padding: 0px 16px;
   margin: 0px 6px 6px 0px;
@@ -48,7 +48,7 @@ const Tag = ({ color, children }) => {
   const rgbColor = hexToRGB(color)
   const hoverColor = rgbToHex(reduceBrightness(rgbColor))
   return (
-    <TagLink to={`/passions/${children}`}>
+    <TagLink to={`/work/${children}`}>
       <TagContainer color={color} hoverColor={hoverColor}>
         <TagText>{children}</TagText>
       </TagContainer>
