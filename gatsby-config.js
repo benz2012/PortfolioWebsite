@@ -2,6 +2,9 @@ require('dotenv').config()
 const path = require(`path`)
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://www.benzenker.me`,
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
 
@@ -50,5 +53,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
 
     `gatsby-transformer-remark`,
+
+    `gatsby-plugin-sitemap`,
   ],
 }
