@@ -70,7 +70,11 @@ export default ({ which, path }) => {
   if (which === 'medium') { other = '-m' }
 
   return (
-    <LinkContainer target="_blank" href={`https://www.${which}.com${path}`}>
+    <LinkContainer
+      target="_blank"
+      rel="noopener"
+      href={`https://www.${which}.com${path}`}
+    >
       <Icon className={`fab fa-${which}${other}`} />
       <Text>{path}</Text>
     </LinkContainer>
