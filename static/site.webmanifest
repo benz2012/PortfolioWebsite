@@ -1,6 +1,7 @@
 {
     "name": "Ben Zenker",
     "short_name": "Ben Zenker",
+    "start_url": "/",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
