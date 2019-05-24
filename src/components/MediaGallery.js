@@ -23,11 +23,11 @@ const Item = styled.div`
 
   &:hover {
     cursor: pointer;
-    box-shadow: 4px 4px 0 0 ${props => props.color};
+    box-shadow: 6px 6px 0 0 ${props => props.color};
   }
 
   ${media.tablet`
-    box-shadow: 4px 4px 0 0 ${props => props.color};
+    box-shadow: 6px 6px 0 0 ${props => props.color};
   `}
 `
 
