@@ -13,6 +13,7 @@ import Section from '../components/Section'
 const coverContainerStyle = (width, color) => ({
   width,
   boxShadow: `10px 10px 0 0 ${color}`,
+  borderRadius: '10px',
 })
 
 const DateString = styled.small`
@@ -60,7 +61,7 @@ export default ({ data, location }) => {
           </TagsWrapper>
 
           {sections.map(({ id, ...rest }) => (
-            <Section key={id} {...rest} />
+            <Section key={id} color={color} {...rest} />
           ))}
         </Content>
       </PageStyle>
@@ -68,7 +69,6 @@ export default ({ data, location }) => {
   )
 }
 
-// TODO: Implement additionalMedia field once atleast one section holds it
 // TODO: Fluid images for thumbnail, aditional, etc
 export const query = graphql`
   query($slug: String!) {

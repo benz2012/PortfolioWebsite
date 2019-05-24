@@ -1,31 +1,57 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import styled from 'styled-components'
 
+import MediaGallery from './MediaGallery'
+import { Center } from './Layout'
 import { titleCase } from '../utils/transform'
 
-export default ({ tag, thumbnail, body, url, additionalMedia }) => (
-  <div id={tag ? tag.name : undefined}>
-    {tag && <h3>{titleCase(tag.name)}</h3>}
+const SubText = styled.small`
+  color: rgba(0, 0, 0, 0.5);
+`
 
-    {thumbnail && <img alt="" src={thumbnail.file.url} />}
-
-    {body &&
-      <div
-        dangerouslySetInnerHTML={{
-          __html: body.childMarkdownRemark.html
-        }}
-      />
-    }
-
-    <p><a href={url}>{url}</a></p>
-
-    {additionalMedia && additionalMedia
+export default ({
+  tag, thumbnail, body, url, color, additionalMedia,
+}) => {
+  const sectionId = tag ? tag.name : undefined
+  const galleryData = additionalMedia ? (
+    additionalMedia
       .filter(media => media.file.contentType.includes('image'))
-      .map(media => (
-        <Fragment key={media.id}>
-          <img alt="" src={media.file.url} />
-          <p>{media.description}</p>
-        </Fragment>
-      ))
-    }
-  </div>
-)
+      .map(({ id, description, ...rest }) => ({
+        id,
+        description,
+        thumb: rest.file.url
+      }))
+  ) : (
+    []
+  )
+
+  return (
+    <div id={sectionId}>
+      {tag && <h3>{titleCase(tag.name)}</h3>}
+
+      {thumbnail && <img alt="" src={thumbnail.file.url} />}
+
+      {body &&
+        <div
+          dangerouslySetInnerHTML={{
+            __html: body.childMarkdownRemark.html
+          }}
+        />
+      }
+
+      <p><a href={url}>{url}</a></p>
+
+      <MediaGallery
+        media={galleryData}
+        color={color}
+      />
+      {galleryData.length > 0 &&
+        <Center>
+          <SubText>
+            <i>click to enlarge</i>
+          </SubText>
+        </Center>
+      }
+    </div>
+  )
+}
