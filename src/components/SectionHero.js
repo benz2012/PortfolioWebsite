@@ -13,7 +13,7 @@ const HeroImage = styled.img`
   padding: 0;
 `
 
-const HeroButton = styled.div`
+const HeroClickableBase = `
   position: absolute;
   bottom: 0;
   right: 0;
@@ -32,6 +32,16 @@ const HeroButton = styled.div`
     color: rgba(255, 255, 255, 1);
     background-color: rgba(0, 0, 0, 0.9);
   }
+`
+
+const HeroButton = styled.div`
+  ${HeroClickableBase}
+`
+
+const HeroLink = styled.a`
+  background: none;
+  text-shadow: none;
+  ${HeroClickableBase}
 `
 
 const ButtonText = styled.b`
@@ -99,6 +109,24 @@ class EmbeddedVideoImage extends Component {
   }
 }
 
+const ExternalLinkImage = ({ image, url, icon, action }) => {
+  return (
+    <HeroContainer>
+      {image}
+      {url &&
+        <HeroLink
+          target="_blank"
+          rel="noopener"
+          href={url}
+        >
+          <i className={`fas fa-${icon}`}></i>
+          <ButtonText>{action}</ButtonText>
+        </HeroLink>
+      }
+    </HeroContainer>
+  )
+}
+
 export {
   HeroContainer,
   HeroImage,
@@ -106,4 +134,5 @@ export {
   ButtonText,
 
   EmbeddedVideoImage,
+  ExternalLinkImage,
 }
