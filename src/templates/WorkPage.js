@@ -81,7 +81,7 @@ export default ({ data, pageContext, location }) => {
                   </Project>
                 </Header>
 
-                <Section {...rest} />
+                <Section {...rest} tag={{ name }} hideTitle />
               </SectionFromProject>
             )
           })}

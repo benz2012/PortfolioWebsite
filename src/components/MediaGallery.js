@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 
+import { Center } from './Layout'
 import media from '../utils/media'
 
 const FIXED_THUMB_SIZE = 150
@@ -9,6 +10,10 @@ const Gallery = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+`
+
+const SubText = styled.small`
+  color: rgba(0, 0, 0, 0.5);
 `
 
 const ItemBase = `
@@ -185,6 +190,14 @@ class MediaGallery extends Component {
             </Item>
           ))}
         </Gallery>
+
+        {media.length > 0 &&
+          <Center>
+            <SubText>
+              <i>click to enlarge</i>
+            </SubText>
+          </Center>
+        }
 
         {interested &&
           <Fragment>

@@ -1,18 +1,37 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import MediaGallery from './MediaGallery'
-import { Center } from './Layout'
+import { HeroImage, EmbeddedVideoImage } from './SectionHero'
 import { titleCase } from '../utils/transform'
 
-const SubText = styled.small`
-  color: rgba(0, 0, 0, 0.5);
-`
-
-export default ({
-  tag, thumbnail, body, url, color, additionalMedia,
+const Section = ({
+  tag = undefined, thumbnail, body, url, color,
+  additionalMedia, hideTitle,
 }) => {
-  const sectionId = tag ? tag.name : undefined
+  const sectionType = tag.name
+
+  let sectionHero = thumbnail && (
+    <HeroImage alt="" src={thumbnail.file.url} />
+  )
+  switch (sectionType) {
+    case 'video':
+    case 'animation':
+      sectionHero = <EmbeddedVideoImage url={url} image={sectionHero} />
+      break;
+    case 'sound':
+    case 'music':
+      // TODO: create component for audio
+      // sectionHero = <EmbeddedAudioImage url={url} />
+      break;
+    case 'code':
+    case 'mobile':
+    case 'web':
+      // sectionHero = <ExternalLinkImage url={url} />
+      break;
+    default:
+      break;
+  }
+
   const galleryData = additionalMedia ? (
     additionalMedia
       .filter(media => media.file.contentType.includes('image'))
@@ -26,32 +45,25 @@ export default ({
   )
 
   return (
-    <div id={sectionId}>
-      {tag && <h3>{titleCase(tag.name)}</h3>}
+    <section id={sectionType}>
+      {!hideTitle &&
+        <h3>{titleCase(sectionType)}</h3>
+      }
 
-      {thumbnail && <img alt="" src={thumbnail.file.url} />}
+      {sectionHero}
 
       {body &&
         <div
+          style={{ marginTop: '1rem' }}
           dangerouslySetInnerHTML={{
             __html: body.childMarkdownRemark.html
           }}
         />
       }
 
-      <p><a href={url}>{url}</a></p>
-
-      <MediaGallery
-        media={galleryData}
-        color={color}
-      />
-      {galleryData.length > 0 &&
-        <Center>
-          <SubText>
-            <i>click to enlarge</i>
-          </SubText>
-        </Center>
-      }
-    </div>
+      <MediaGallery media={galleryData} color={color} />
+    </section>
   )
 }
+
+export default Section
