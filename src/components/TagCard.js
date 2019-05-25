@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
+import media from '../utils/media'
+
 const TagCardsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -31,6 +33,14 @@ const Card = styled(Link)`
       text-decoration: underline;
     }
   }
+
+  ${media.phone`
+    width: 45%;
+    line-height 1rem;
+    & > h3 {
+      text-decoration: underline;
+    }
+  `}
 `
 
 const Name = styled.h3`

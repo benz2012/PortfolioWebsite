@@ -9,11 +9,16 @@ import Metadata from '../components/Metadata'
 import { PageStyle, Center, Content } from '../components/Layout'
 import Tag, { TagsWrapper } from '../components/Tag'
 import Section from '../components/Section'
+import media from '../utils/media'
 
-const coverContainerStyle = (width, color) => ({
-  width,
-  boxShadow: `10px 10px 0 0 ${color}`,
-})
+const CoverPhoto = styled(Img)`
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 10px 10px 0 0 ${props => props.color};
+  ${media.phone`
+    box-shadow: 0px 10px 0 0 ${props => props.color};
+  `}
+`
 
 const DateString = styled.small`
   color: rgba(0, 0, 0, 0.50);
@@ -40,13 +45,7 @@ export default ({ data, location }) => {
 
         <Content>
           <Center>
-            <Img
-              fluid={coverPhoto.fluid}
-              style={coverContainerStyle(
-                coverPhoto.fluid.sizes.split(', ')[1],
-                color,
-              )}
-            />
+            <CoverPhoto fluid={coverPhoto.fluid} color={color} />
           </Center>
 
           <h2>{name}</h2>
@@ -60,7 +59,7 @@ export default ({ data, location }) => {
           </TagsWrapper>
 
           {sections.map(({ id, ...rest }) => (
-            <Section key={id} {...rest} />
+            <Section key={id} color={color} {...rest} />
           ))}
         </Content>
       </PageStyle>
@@ -68,7 +67,6 @@ export default ({ data, location }) => {
   )
 }
 
-// TODO: Implement additionalMedia field once atleast one section holds it
 // TODO: Fluid images for thumbnail, aditional, etc
 export const query = graphql`
   query($slug: String!) {

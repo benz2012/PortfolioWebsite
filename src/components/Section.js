@@ -1,31 +1,84 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
+import MediaGallery from './MediaGallery'
+import { HeroImage, EmbeddedVideoImage, ExternalLinkImage } from './SectionHero'
 import { titleCase } from '../utils/transform'
 
-export default ({ tag, thumbnail, body, url, additionalMedia }) => (
-  <div id={tag ? tag.name : undefined}>
-    {tag && <h3>{titleCase(tag.name)}</h3>}
+const Section = ({
+  tag = undefined, thumbnail, body, url, color,
+  additionalMedia, hideTitle,
+}) => {
+  const sectionType = tag.name
 
-    {thumbnail && <img alt="" src={thumbnail.file.url} />}
+  let sectionHero = thumbnail && (
+    <HeroImage alt="" src={thumbnail.file.url} />
+  )
 
-    {body &&
-      <div
-        dangerouslySetInnerHTML={{
-          __html: body.childMarkdownRemark.html
-        }}
+  if (['video', 'animation'].includes(sectionType)) {
+    sectionHero = <EmbeddedVideoImage url={url} image={sectionHero} />
+  } else if (['sound', 'music'].includes(sectionType)) {
+    // TODO: create component for audio
+    // sectionHero = <EmbeddedAudioImage url={url} />
+  } else if (['code', 'mobile', 'web'].includes(sectionType)) {
+    let icon
+    let action
+    switch (sectionType) {
+      case 'code':
+        icon = 'code'
+        action = 'View Code'
+        break;
+      case 'mobile':
+        icon='mobile-alt'
+        action='Download App'
+        break;
+      case 'web':
+        icon='globe'
+        action='Visit Website'
+        break;
+    }
+
+    sectionHero = (
+      <ExternalLinkImage
+        icon={icon}
+        action={action}
+        url={url}
+        image={sectionHero}
       />
-    }
+    )
+  }
 
-    <p><a href={url}>{url}</a></p>
-
-    {additionalMedia && additionalMedia
+  const galleryData = additionalMedia ? (
+    additionalMedia
       .filter(media => media.file.contentType.includes('image'))
-      .map(media => (
-        <Fragment key={media.id}>
-          <img alt="" src={media.file.url} />
-          <p>{media.description}</p>
-        </Fragment>
-      ))
-    }
-  </div>
-)
+      .map(({ id, description, ...rest }) => ({
+        id,
+        description,
+        thumb: rest.file.url
+      }))
+  ) : (
+    []
+  )
+
+  return (
+    <section id={sectionType}>
+      {!hideTitle &&
+        <h3>{titleCase(sectionType)}</h3>
+      }
+
+      {sectionHero}
+
+      {body &&
+        <div
+          style={{ marginTop: '1rem' }}
+          dangerouslySetInnerHTML={{
+            __html: body.childMarkdownRemark.html
+          }}
+        />
+      }
+
+      <MediaGallery media={galleryData} color={color} />
+    </section>
+  )
+}
+
+export default Section

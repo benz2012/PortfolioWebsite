@@ -13,6 +13,8 @@ const TagsWrapper = styled.div`
 const TagContainer = styled.div`
   height: 32px;
   border-radius: 16px 16px 16px 16px;
+  display: flex;
+  align-items: center;
 
   padding: 0px 16px;
   margin: 0px 6px 6px 0px;
