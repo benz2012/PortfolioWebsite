@@ -11,7 +11,7 @@ const Section = ({
   const sectionType = tag.name
 
   let sectionHero = thumbnail && (
-    <HeroImage alt="" src={thumbnail.file.url} />
+    <HeroImage fluid={thumbnail.fluid} />
   )
 
   if (['video', 'animation'].includes(sectionType)) {
@@ -23,6 +23,7 @@ const Section = ({
     let icon
     let action
     switch (sectionType) {
+      /* eslint default-case: 0 */
       case 'code':
         icon = 'code'
         action = 'View Code'
@@ -48,13 +49,7 @@ const Section = ({
   }
 
   const galleryData = additionalMedia ? (
-    additionalMedia
-      .filter(media => media.file.contentType.includes('image'))
-      .map(({ id, description, ...rest }) => ({
-        id,
-        description,
-        thumb: rest.file.url
-      }))
+    additionalMedia.filter(media => media.file.contentType.includes('image'))
   ) : (
     []
   )

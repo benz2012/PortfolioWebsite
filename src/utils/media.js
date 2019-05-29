@@ -15,4 +15,10 @@ const media = Object.keys(sizes).reduce((acc, label) => {
   return acc
 }, {})
 
+// Static Sizes
+const GALLERY_THUMB_SIZE = 150
+
 export default media
+export {
+  GALLERY_THUMB_SIZE,
+}

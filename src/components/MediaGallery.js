@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react'
+import Img from 'gatsby-image'
 import styled from 'styled-components'
 
 import { Center } from './Layout'
-import media from '../utils/media'
-
-const FIXED_THUMB_SIZE = 150
+import media, { GALLERY_THUMB_SIZE } from '../utils/media'
 
 const Gallery = styled.div`
   display: flex;
@@ -17,8 +16,8 @@ const SubText = styled.small`
 `
 
 const ItemBase = `
-  width: ${FIXED_THUMB_SIZE}px;
-  height: ${FIXED_THUMB_SIZE}px;
+  width: ${GALLERY_THUMB_SIZE}px;
+  height: ${GALLERY_THUMB_SIZE}px;
   border-radius: 10px;
 `
 
@@ -36,7 +35,7 @@ const Item = styled.div`
   `}
 `
 
-const Image = styled.img`
+const Thumb = styled(Img)`
   ${ItemBase}
   object-fit: cover;
 `
@@ -70,6 +69,7 @@ const Close = styled.button`
   border-radius: 20px;
   background: none;
   font-size: 24px;
+  line-height: 24px;
   box-shadow: 1px 1px 0px black;
 
   &:hover {
@@ -181,9 +181,9 @@ class MediaGallery extends Component {
               role="button"
               onClick={this.enlarge}
             >
-              <Image
+              <Thumb
+                fixed={medium.thumbnail}
                 color={color}
-                src={medium.thumb}
                 title={medium.description}
                 alt={medium.description}
               />
@@ -204,7 +204,7 @@ class MediaGallery extends Component {
             <ModalLayer>
               <Close tabIndex="1" onClick={this.close}>&times;</Close>
               <ModalContent id="click-pass-thru" onClick={this.maybeClose}>
-                <ModalImage src={interested.thumb} />
+                <ModalImage src={interested.image.src} />
                 <ModalText>{interested.description}</ModalText>
               </ModalContent>
             </ModalLayer>

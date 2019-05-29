@@ -124,7 +124,7 @@ export const query = graphql`
           }
         }
         coverPhoto {
-          fluid(maxWidth: 1060 maxHeight: 540 cropFocus: CENTER) {
+          fluid(maxWidth: 500 maxHeight: 254 cropFocus: CENTER) {
             ...GatsbyContentfulFluid
           }
         }
