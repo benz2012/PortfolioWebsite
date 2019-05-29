@@ -111,8 +111,8 @@ export const query = graphql`
           id
           header
           thumbnail {
-            file {
-              url
+            fluid(maxWidth: 700) {
+              ...GatsbyContentfulFluid
             }
           }
           body {
@@ -125,8 +125,13 @@ export const query = graphql`
             id
             description
             file {
-              url
               contentType
+            }
+            thumbnail: fixed(width: 150, height: 150, cropFocus: CENTER) {
+              ...GatsbyContentfulFixed
+            }
+            image: fluid(maxWidth: 1200) {
+              ...GatsbyContentfulFluid
             }
           }
           project {

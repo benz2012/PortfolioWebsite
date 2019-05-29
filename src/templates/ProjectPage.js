@@ -37,7 +37,7 @@ export default ({ data, location }) => {
         title={name}
         description={description.description}
         pathname={location.pathname}
-        image={`https:${coverPhoto.fluid.src}`}
+        image={`https:${coverPhoto.fluid.src}&q=100`}
       />
 
       <PageStyle>
@@ -67,7 +67,6 @@ export default ({ data, location }) => {
   )
 }
 
-// TODO: Fluid images for thumbnail, aditional, etc
 export const query = graphql`
   query($slug: String!) {
     contentfulProject(slug: { eq: $slug }) {
@@ -77,7 +76,7 @@ export const query = graphql`
       }
       color
       coverPhoto {
-        fluid(maxWidth: 700 maxHeight: 378 cropFocus: CENTER) {
+        fluid(maxWidth: 700, maxHeight: 378, cropFocus: CENTER) {
           ...GatsbyContentfulFluid
         }
       }
@@ -91,8 +90,8 @@ export const query = graphql`
           name
         }
         thumbnail {
-          file {
-            url
+          fluid(maxWidth: 700) {
+            ...GatsbyContentfulFluid
           }
         }
         body {
@@ -105,8 +104,13 @@ export const query = graphql`
           id
           description
           file {
-            url
             contentType
+          }
+          thumbnail: fixed(width: 150, height: 150, cropFocus: CENTER) {
+            ...GatsbyContentfulFixed
+          }
+          image: fluid(maxWidth: 1200) {
+            ...GatsbyContentfulFluid
           }
         }
       }
