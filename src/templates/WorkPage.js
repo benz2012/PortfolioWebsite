@@ -51,6 +51,17 @@ const sortSections = (a, b) => {
 export default ({ data, pageContext, location }) => {
   const sections = data.allContentfulSection.edges
   const { name, description } = pageContext
+
+  const missing = sections.filter(({ node }) => !node.project)
+  if (missing.length > 0) {
+    return (
+      <>
+        <h2>Some project links are undefined.</h2>
+        <ul>{missing.map(({ node }) => (<li key={node.id}>{node.header}</li>))}</ul>
+      </>
+    )
+  }
+
   return (
     <Page>
       <Metadata
