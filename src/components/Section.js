@@ -25,7 +25,7 @@ class Section extends Component {
       <HeroImage fluid={thumbnail.fluid} />
     )
 
-    if (['video', 'animation', 'product'].includes(sectionType)) {
+    if (['video', 'animation', 'product'].includes(sectionType) && url) {
       sectionHero = <EmbeddedVideoImage url={url} image={sectionHero} />
     } else if (['sound', 'music'].includes(sectionType)) {
       // TODO: create component for audio
