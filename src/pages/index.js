@@ -104,7 +104,7 @@ export const query = graphql`
 {
   allContentfulProject(
     filter: { featured: { eq: true } }
-    sort: { fields: dateCreated, order: DESC }
+    sort: { fields: dateCompleted, order: DESC }
   ) {
     edges {
       node {

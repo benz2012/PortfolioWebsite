@@ -7,6 +7,7 @@ const HeaderName = styled.h1`
   margin-top: 1rem;
   margin-bottom: 3rem;
   text-decoration: underline;
+  text-shadow: none;
 
   &:hover {
     color: grey;
