@@ -2,7 +2,12 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
+version: 2.1
+
+parameters:
+  run_workflow_main:
+    default: true
+    type: boolean
 
 jobs:
   build:
@@ -53,6 +58,7 @@ jobs:
 workflows:
   version: 2
   main:
+    when: << pipeline.parameters.run_workflow_main >>
     jobs:
       - build
       - deploy:
