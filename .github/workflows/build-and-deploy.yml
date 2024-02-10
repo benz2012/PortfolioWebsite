@@ -8,6 +8,11 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
+      CONTENTFUL_SPACE_ID: '${{ secrets.CONTENTFUL_SPACE_ID }}'
+      CONTENTFUL_PREVIEW_KEY: '${{ secrets.CONTENTFUL_PREVIEW_KEY }}'
+      CONTENTFUL_DELIVERY_KEY: '${{ secrets.CONTENTFUL_DELIVERY_KEY }}'
     steps:
       - uses: actions/checkout@v4
       - run: npm ci
