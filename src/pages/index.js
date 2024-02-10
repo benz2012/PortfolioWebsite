@@ -104,7 +104,7 @@ export const query = graphql`
 {
   allContentfulProject(
     filter: { featured: { eq: true } }
-    sort: { fields: dateCompleted, order: DESC }
+    sort: { dateCompleted: DESC }
   ) {
     edges {
       node {
@@ -124,7 +124,7 @@ export const query = graphql`
           }
         }
         coverPhoto {
-          fluid(maxWidth: 500 maxHeight: 254 cropFocus: CENTER) {
+          fluid(maxWidth: 500, maxHeight: 254, cropFocus: CENTER) {
             ...GatsbyContentfulFluid
           }
         }
@@ -132,7 +132,7 @@ export const query = graphql`
     }
   }
 
-  allContentfulTag(sort: { fields: name, order: ASC }) {
+  allContentfulTag(sort: { name: ASC }) {
     edges {
       node {
         id
@@ -146,7 +146,7 @@ export const query = graphql`
 
   hero: file(relativePath: { eq: "hero.jpg" }) {
     childImageSharp {
-      fluid(maxWidth: 4000 maxHeight: 2150 cropFocus: CENTER) {
+      fluid(maxWidth: 4000, maxHeight: 2150, cropFocus: CENTER) {
         ...GatsbyImageSharpFluid
       }
     }
