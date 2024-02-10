@@ -8,7 +8,7 @@ const ImageContainer = styled(GatsbyImage)`
   border-radius: 50%;
 `
 
-export default () => (
+const Avatar = () => (
   <StaticQuery
     query={graphql`
       {
@@ -24,3 +24,5 @@ export default () => (
     )}
   />
 )
+
+export default Avatar

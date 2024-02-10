@@ -60,7 +60,7 @@ const DateString = styled.small`
   color: rgba(0, 0, 0, 0.50)
 `
 
-export default ({ name, date, description, image, color, tags, slug }) => {
+const ProjectFeaturette = ({ name, date, description, image, color, tags, slug }) => {
   const rgbColor = hexToRGB(color)
   return (
     <ProjectContainer>
@@ -83,3 +83,5 @@ export default ({ name, date, description, image, color, tags, slug }) => {
     </ProjectContainer>
   )
 }
+
+export default ProjectFeaturette

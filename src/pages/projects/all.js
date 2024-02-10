@@ -15,7 +15,7 @@ const ProjectsWrapper = styled.div`
   margin-top: 40px;
 `
 
-export default ({ data, location }) => {
+const All = ({ data, location }) => {
   const projects = data.allContentfulProject.edges
   return (
     <Page>
@@ -83,3 +83,5 @@ export const query = graphql`
   }
 }
 `
+
+export default All

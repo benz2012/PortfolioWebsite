@@ -24,7 +24,7 @@ const Body = styled.section`
 export {
   AboutSegment,
 }
-export default () => (
+const About = () => (
   <StaticQuery
     query={graphql`
       {
@@ -46,3 +46,5 @@ export default () => (
     )}
   />
 )
+
+export default About

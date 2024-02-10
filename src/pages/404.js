@@ -5,7 +5,7 @@ import Metadata from '../components/Metadata'
 import HeaderNav from '../components/HeaderNav'
 import { PageStyle, Content } from '../components/Layout'
 
-export default ({ location }) => (
+const Four0Four = ({ location }) => (
   <Page>
     <Metadata
       title="Whoops"
@@ -25,3 +25,5 @@ export default ({ location }) => (
     </PageStyle>
   </Page>
 )
+
+export default Four0Four

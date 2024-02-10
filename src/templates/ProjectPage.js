@@ -24,7 +24,7 @@ const DateString = styled.small`
   color: rgba(0, 0, 0, 0.50);
 `
 
-export default ({ data, location }) => {
+const ProjectPage = ({ data, location }) => {
   const { coverPhoto, color, name, description, dateCreated,
     dateCompleted, sections } = data.contentfulProject
   const dateStamp = dateCompleted ?
@@ -109,3 +109,5 @@ export const query = graphql`
     }
   }
 `
+
+export default ProjectPage

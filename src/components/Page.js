@@ -7,7 +7,7 @@ import Avatar from './Avatar'
 import About, { AboutSegment } from './About'
 import SocialLink, { LinksSegment } from './SocialLink'
 
-export default ({ children }) => (
+const Page = ({ children }) => (
   <Fragment>
     <Helmet>
       {/* Favicon */}
@@ -54,3 +54,5 @@ export default ({ children }) => (
     </Footer>
   </Fragment>
 )
+
+export default Page

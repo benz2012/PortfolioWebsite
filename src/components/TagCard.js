@@ -50,13 +50,14 @@ const Name = styled.h3`
 
 const Description = styled.small``
 
-export default ({ name, description }) => (
+const TagCard = ({ name, description }) => (
   <Card to={`/work/${name}`}>
     <Description>{description}</Description>
     <Name>{name}</Name>
   </Card>
 )
 
+export default TagCard
 export {
   TagCardsContainer,
 }

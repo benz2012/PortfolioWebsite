@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 
-export default ({
+const Metadata = ({
   title, description, pathname, image, noTitleTemplate, relativeImage,
 }) => (
   <StaticQuery
@@ -65,3 +65,5 @@ export default ({
     }}
   />
 )
+
+export default Metadata

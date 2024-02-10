@@ -202,7 +202,7 @@ class MediaGallery extends Component {
         {interested &&
           <Fragment>
             <ModalLayer>
-              <Close tabIndex="1" onClick={this.close}>&times;</Close>
+              <Close tabIndex="0" onClick={this.close}>&times;</Close>
               <ModalContent id="click-pass-thru" onClick={this.maybeClose}>
                 <ModalImage src={interested.image.src} />
                 <ModalText>{interested.description}</ModalText>

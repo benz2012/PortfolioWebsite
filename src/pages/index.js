@@ -30,7 +30,7 @@ const WorkContainer = styled.div`
   background-color: #D1D5D4;
 `
 
-export default ({ data }) => {
+const App = ({ data }) => {
   const projects = data.allContentfulProject.edges
   const tags = data.allContentfulTag.edges
   const heroImage = data.hero.childImageSharp.gatsbyImageData
@@ -155,3 +155,5 @@ export const query = graphql`
   }
 }
 `
+
+export default App

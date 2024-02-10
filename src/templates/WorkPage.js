@@ -48,7 +48,7 @@ const sortSections = (a, b) => {
   return 0
 }
 
-export default ({ data, pageContext, location }) => {
+const WorkPage = ({ data, pageContext, location }) => {
   const sections = data.allContentfulSection.edges
   const { name, description } = pageContext
 
@@ -149,3 +149,5 @@ export const query = graphql`
     }
   }
 `
+
+export default WorkPage

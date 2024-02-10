@@ -63,7 +63,7 @@ const Text = styled.div`
 export{
   LinksSegment,
 }
-export default ({ which, path }) => {
+const SocialLink = ({ which, path }) => {
   let other = ''
   if (which === 'facebook') { other = '-f' }
   if (which === 'linkedin') { other = '-in' }
@@ -80,3 +80,5 @@ export default ({ which, path }) => {
     </LinkContainer>
   )
 }
+
+export default SocialLink
