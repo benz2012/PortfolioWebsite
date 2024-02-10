@@ -42,7 +42,7 @@ export default ({ data, location }) => {
                   key={id}
                   date={dateStamp}
                   description={description.description}
-                  image={coverPhoto.fluid}
+                  image={coverPhoto.gatsbyImageData}
                   tags={sections.map(s => s.tag)}
                   {...rest}
                 />
@@ -78,9 +78,7 @@ export const query = graphql`
           }
         }
         coverPhoto {
-          fluid(maxWidth: 1060 maxHeight: 540 cropFocus: CENTER) {
-            ...GatsbyContentfulFluid
-          }
+          gatsbyImageData(width: 1060, transformOptions: {cropFocus: CENTER})
         }
       }
     }

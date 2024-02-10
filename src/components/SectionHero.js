@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
 import { YoutubeVideo } from './Video'
@@ -8,7 +8,7 @@ const HeroContainer = styled.div`
   position: relative;
 `
 
-const HeroImage = styled(Img)`
+const HeroImage = styled(GatsbyImage)`
   display: block;
   margin: 0;
   padding: 0;

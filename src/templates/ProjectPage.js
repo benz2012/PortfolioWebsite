@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import { graphql } from 'gatsby'
 
 import HeaderNav from '../components/HeaderNav'
@@ -11,7 +11,7 @@ import Tag, { TagsWrapper } from '../components/Tag'
 import Section from '../components/Section'
 import media from '../utils/media'
 
-const CoverPhoto = styled(Img)`
+const CoverPhoto = styled(GatsbyImage)`
   width: 100%;
   border-radius: 10px;
   box-shadow: 10px 10px 0 0 ${props => props.color};
@@ -37,7 +37,7 @@ export default ({ data, location }) => {
         title={name}
         description={description.description}
         pathname={location.pathname}
-        image={`https:${coverPhoto.fluid.src}&q=100`}
+        image={`https:${coverPhoto.gatsbyImageData.src}&q=100`}
       />
 
       <PageStyle>
@@ -45,7 +45,7 @@ export default ({ data, location }) => {
 
         <Content>
           <Center>
-            <CoverPhoto fluid={coverPhoto.fluid} color={color} />
+            <CoverPhoto image={coverPhoto.gatsbyImageData} color={color} />
           </Center>
 
           <h2>{name}</h2>
@@ -76,9 +76,7 @@ export const query = graphql`
       }
       color
       coverPhoto {
-        fluid(maxWidth: 700, maxHeight: 378, cropFocus: CENTER) {
-          ...GatsbyContentfulFluid
-        }
+        gatsbyImageData(width: 700, transformOptions: {cropFocus: CENTER})
       }
       dateCreated(formatString: "MMMM YYYY")
       dateCompleted(formatString: "MMMM YYYY")
@@ -90,9 +88,7 @@ export const query = graphql`
           name
         }
         thumbnail {
-          fluid(maxWidth: 700) {
-            ...GatsbyContentfulFluid
-          }
+          gatsbyImageData(width: 700)
         }
         body {
           childMarkdownRemark {
@@ -106,12 +102,8 @@ export const query = graphql`
           file {
             contentType
           }
-          thumbnail: fixed(width: 150, height: 150, cropFocus: CENTER) {
-            ...GatsbyContentfulFixed
-          }
-          image: fluid(maxWidth: 1200) {
-            ...GatsbyContentfulFluid
-          }
+          thumbnail: gatsbyImageData(layout: FIXED, width: 150, height: 150, transformOptions: {cropFocus: CENTER})
+          image: gatsbyImageData(width: 1200)
         }
       }
     }

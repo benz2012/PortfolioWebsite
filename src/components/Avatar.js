@@ -1,9 +1,9 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
-const ImageContainer = styled(Img)`
+const ImageContainer = styled(GatsbyImage)`
   width: 200px;
   border-radius: 50%;
 `
@@ -14,15 +14,13 @@ export default () => (
       {
         file(relativePath: { eq: "avatar.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 512) {
-              ...GatsbyImageSharpFluid_tracedSVG
-            }
+            gatsbyImageData(width: 512, placeholder: TRACED_SVG, layout: CONSTRAINED)
           }
         }
       }
     `}
     render={data => (
-      <ImageContainer fluid={data.file.childImageSharp.fluid} />
+      <ImageContainer image={data.file.childImageSharp.gatsbyImageData} />
     )}
   />
 )

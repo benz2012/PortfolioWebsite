@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
 import { Center } from './Layout'
@@ -35,7 +35,7 @@ const Item = styled.div`
   `}
 `
 
-const Thumb = styled(Img)`
+const Thumb = styled(GatsbyImage)`
   ${ItemBase}
   object-fit: cover;
 `
@@ -182,7 +182,7 @@ class MediaGallery extends Component {
               onClick={this.enlarge}
             >
               <Thumb
-                fixed={medium.thumbnail}
+                image={medium.thumbnail}
                 color={color}
                 title={medium.description}
                 alt={medium.description}

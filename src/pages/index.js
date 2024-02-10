@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import ProjectFeaturette from '../components/ProjectFeaturette'
 import Page from '../components/Page'
@@ -33,7 +33,7 @@ const WorkContainer = styled.div`
 export default ({ data }) => {
   const projects = data.allContentfulProject.edges
   const tags = data.allContentfulTag.edges
-  const heroImage = data.hero.childImageSharp.fluid
+  const heroImage = data.hero.childImageSharp.gatsbyImageData
   const workDescrip = data.work.childMarkdownRemark
 
   return (
@@ -46,7 +46,7 @@ export default ({ data }) => {
         relativeImage
       />
 
-      <Img fluid={heroImage} />
+      <GatsbyImage image={heroImage} />
       <HeroText aspectRatio={heroImage.aspectRatio}>
         Hi, I'm Ben Zenker
       </HeroText>
@@ -66,7 +66,7 @@ export default ({ data }) => {
                   key={id}
                   date={dateStamp}
                   description={description.description}
-                  image={coverPhoto.fluid}
+                  image={coverPhoto.gatsbyImageData}
                   tags={sections.map(s => s.tag)}
                   {...rest}
                 />
@@ -124,9 +124,7 @@ export const query = graphql`
           }
         }
         coverPhoto {
-          fluid(maxWidth: 500, maxHeight: 254, cropFocus: CENTER) {
-            ...GatsbyContentfulFluid
-          }
+          gatsbyImageData(width: 500, transformOptions: {cropFocus: CENTER})
         }
       }
     }
@@ -146,9 +144,7 @@ export const query = graphql`
 
   hero: file(relativePath: { eq: "hero.jpg" }) {
     childImageSharp {
-      fluid(maxWidth: 4000, maxHeight: 2150, cropFocus: CENTER) {
-        ...GatsbyImageSharpFluid
-      }
+      gatsbyImageData(transformOptions: {cropFocus: CENTER}, layout: FULL_WIDTH)
     }
   }
 

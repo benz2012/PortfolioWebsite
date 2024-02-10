@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import TextLink from './TextLink'
 import Tag, { TagsWrapper } from './Tag'
@@ -65,7 +65,7 @@ export default ({ name, date, description, image, color, tags, slug }) => {
   return (
     <ProjectContainer>
       <ColoredImageContainer>
-        <Img fluid={image} />
+        <GatsbyImage image={image} />
         <ImageColorOverlay {...rgbColor} />
         <TitleOverImage color={color} to={`/projects/${slug}/`}>
           <Title {...rgbColor}>{name}</Title>

@@ -22,7 +22,7 @@ class Section extends Component {
     const sectionType = tag.name
 
     let sectionHero = thumbnail && (
-      <HeroImage fluid={thumbnail.fluid} />
+      <HeroImage image={thumbnail.gatsbyImageData} />
     )
 
     if (['video', 'animation', 'product'].includes(sectionType) && url) {

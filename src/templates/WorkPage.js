@@ -122,9 +122,7 @@ export const query = graphql`
           id
           header
           thumbnail {
-            fluid(maxWidth: 700) {
-              ...GatsbyContentfulFluid
-            }
+            gatsbyImageData(width: 700)
           }
           body {
             childMarkdownRemark {
@@ -138,12 +136,8 @@ export const query = graphql`
             file {
               contentType
             }
-            thumbnail: fixed(width: 150, height: 150, cropFocus: CENTER) {
-              ...GatsbyContentfulFixed
-            }
-            image: fluid(maxWidth: 1200) {
-              ...GatsbyContentfulFluid
-            }
+            thumbnail: gatsbyImageData(layout: FIXED, width: 150, height: 150, transformOptions: {cropFocus: CENTER})
+            image: gatsbyImageData(width: 1200)
           }
           project {
             name
