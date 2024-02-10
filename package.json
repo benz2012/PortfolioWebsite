@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby clean && gatsby develop",
-    "start": "npm run develop"
+    "dev": "gatsby clean && gatsby develop",
+    "start": "npm run dev"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^2.1.4",

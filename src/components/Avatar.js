@@ -14,7 +14,7 @@ export default () => (
       {
         file(relativePath: { eq: "avatar.jpg" }) {
           childImageSharp {
-            gatsbyImageData(width: 512, placeholder: TRACED_SVG, layout: CONSTRAINED)
+            gatsbyImageData(width: 512, placeholder: DOMINANT_COLOR, layout: CONSTRAINED)
           }
         }
       }

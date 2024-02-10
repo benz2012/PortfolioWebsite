@@ -57,9 +57,7 @@ export default ({ data, location }) => {
 
 export const query = graphql`
 {
-  allContentfulProject(
-    sort: { fields: dateCompleted, order: DESC }
-  ) {
+  allContentfulProject(sort: { dateCompleted: DESC }) {
     edges {
       node {
         id
@@ -78,7 +76,7 @@ export const query = graphql`
           }
         }
         coverPhoto {
-          gatsbyImageData(width: 1060, transformOptions: {cropFocus: CENTER})
+          gatsbyImageData(width: 1060, cropFocus: CENTER)
         }
       }
     }
