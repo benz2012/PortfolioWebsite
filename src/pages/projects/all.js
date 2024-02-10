@@ -76,7 +76,7 @@ export const query = graphql`
           }
         }
         coverPhoto {
-          gatsbyImageData(width: 1060, cropFocus: CENTER)
+          gatsbyImageData(width: 1060, height: 540, cropFocus: CENTER)
         }
       }
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getSrc } from "gatsby-plugin-image";
 
 import ProjectFeaturette from '../components/ProjectFeaturette'
 import Page from '../components/Page'
@@ -35,6 +35,7 @@ const App = ({ data }) => {
   const tags = data.allContentfulTag.edges
   const heroImage = data.hero.childImageSharp.gatsbyImageData
   const workDescrip = data.work.childMarkdownRemark
+  const heroImgSrc = getSrc(data.hero)
 
   return (
     <Page>
@@ -42,12 +43,12 @@ const App = ({ data }) => {
         noTitleTemplate
         description="I am filled with both creative and technological
           passions. Learn more on my portfolio website."
-        image={heroImage.src}
+        image={heroImgSrc}
         relativeImage
       />
 
       <GatsbyImage image={heroImage} />
-      <HeroText aspectRatio={heroImage.aspectRatio}>
+      <HeroText aspectRatio={(4000 / 2150).toFixed(2)}>
         Hi, I'm Ben Zenker
       </HeroText>
 
@@ -124,7 +125,7 @@ export const query = graphql`
           }
         }
         coverPhoto {
-          gatsbyImageData(width: 500, cropFocus: CENTER)
+          gatsbyImageData(width: 500, height: 254 cropFocus: CENTER)
         }
       }
     }
@@ -144,7 +145,7 @@ export const query = graphql`
 
   hero: file(relativePath: { eq: "hero.jpg" }) {
     childImageSharp {
-      gatsbyImageData(transformOptions: {cropFocus: CENTER}, layout: FULL_WIDTH)
+      gatsbyImageData(width: 4000, height: 2150, transformOptions: {cropFocus: CENTER}, placeholder: BLURRED)
     }
   }
 

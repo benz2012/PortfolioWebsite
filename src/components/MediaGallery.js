@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getSrc } from 'gatsby-plugin-image'
 import styled from 'styled-components'
 
 import { Center } from './Layout'
@@ -109,6 +109,7 @@ const ModalText = styled.p`
 class MediaGallery extends Component {
   state = {
     enlarged: null,
+    modalImageLoaded: false,
   }
 
   componentWillUnmount() {
@@ -129,7 +130,7 @@ class MediaGallery extends Component {
   }
 
   close = () => {
-    this.setState({ enlarged: null })
+    this.setState({ enlarged: null, modalImageLoaded: false })
     document.removeEventListener('keydown', this.handleKeyDown)
   }
 
@@ -169,6 +170,7 @@ class MediaGallery extends Component {
     const { media, color } = this.props
     const { enlarged } = this.state
     const interested = media.find(m => m.id === enlarged)
+    const interestedImgSrc = interested && getSrc(interested.image)
 
     return (
       <Fragment>
@@ -204,7 +206,8 @@ class MediaGallery extends Component {
             <ModalLayer>
               <Close tabIndex="0" onClick={this.close}>&times;</Close>
               <ModalContent id="click-pass-thru" onClick={this.maybeClose}>
-                <ModalImage src={interested.image.src} />
+                <ModalImage src={interestedImgSrc} onLoad={() => this.setState({ modalImageLoaded: true })} />
+                {!this.state.modalImageLoaded && (<ModalText>Loading Hi-Res Image ...</ModalText>)}
                 <ModalText>{interested.description}</ModalText>
               </ModalContent>
             </ModalLayer>

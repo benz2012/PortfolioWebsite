@@ -76,7 +76,7 @@ export const query = graphql`
       }
       color
       coverPhoto {
-        gatsbyImageData(width: 700, cropFocus: CENTER)
+        gatsbyImageData(width: 700, height: 378, cropFocus: CENTER)
       }
       dateCreated(formatString: "MMMM YYYY")
       dateCompleted(formatString: "MMMM YYYY")
