@@ -19,10 +19,6 @@ const Page = ({ children }) => (
       <meta name="msapplication-TileColor" content="#00aba9" />
       <meta name="theme-color" content="#ffffff" />
 
-      {/* Analytics Tracking Metadata */}
-      <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101182604);</script>
-      <script async src="//static.getclicky.com/js"></script>
-
       {/* Font for social icons */}
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" />
     </Helmet>
